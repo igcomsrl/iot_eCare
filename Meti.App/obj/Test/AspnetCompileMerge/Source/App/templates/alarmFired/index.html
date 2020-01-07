@@ -1,0 +1,256 @@
+﻿<div class="page-head">
+
+    <div class="page-title">
+        <h1>
+            <i class="fa fa-bell-o" aria-hidden="true"></i>
+            Allarmi <small>Ultimo aggiornamento allarmi attivi: {{model.lastUpdatePooling.toLocaleString("it-IT")}}</small>
+           
+        </h1>
+    </div>
+</div>
+<style>
+    .border-red {
+        border-color: red !important;
+    }
+
+    .border-yellow {
+        border-color: yellow !important;
+    }
+
+    .border-green {
+        border-color: greenyellow !important;
+    }
+
+    .timeline-badge-userpic {
+        width: 80px;
+        border: 2px #f5f6fa solid;
+        -webkit-border-radius: 50% !important;
+        -moz-border-radius: 50% !important;
+        border-radius: 50% !important;
+    }
+</style>
+<div class="row">
+
+
+
+</div>
+
+<uib-tabset>
+    <uib-tab heading="Allarmi attivi">
+
+        <div class="row">
+            <div class="col-md-12">                
+                <button class="btn btn-circle green-haze btn-md" type="button" ng-click="fetch()">
+                    Aggiorna i dati
+                </button>
+                <br />
+                <br />
+            </div>
+           
+            <div class="col-md-4">
+                <strong>Allarmi Codice Rosso ({{model.alarmFiredRedList.length}})</strong>
+
+                <div class="timeline" style="max-height: 500px; overflow-y: auto;">
+
+                    <div class="timeline-item" ng-repeat="alarmFired in model.alarmFiredRedList | orderBy: 'insertDate' track by $index">
+                        <div class="timeline-badge">
+                            <img src="http://www.sharonsala.it/wp-content/uploads/2017/02/Foto_profilo_aziendale_10-1024x683.jpg" class="timeline-badge-userpic border-red" alt="">
+                        </div>
+
+                        <div class="timeline-body">
+                            <div class="timeline-body-arrow">
+                            </div>
+                            <div class="timeline-body-head">
+                                <div class="timeline-body-head-caption">
+                                    <a href="javascript:;" class="timeline-body-title font-blue-madison">{{alarmFired.patientName}}</a>
+                                    <!--<span class="timeline-body-time font-grey-cascade">Replied at 7:45 PM</span>-->
+                                </div>
+                                <div class="timeline-body-head-actions">
+                                    <div class="btn-group">
+                                        <button class="btn btn-circle green-haze btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" ng-click="toDetail(alarmFired)">
+                                            Intervieni!
+                                        </button>
+                                        <!--<ul class="dropdown-menu pull-right" role="menu">
+                                    <li>
+                                        <a href="javascript:;">Action </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">Another action </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">Something else here </a>
+                                    </li>
+                                    <li class="divider">
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">Separated link </a>
+                                    </li>
+                                </ul>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-body-content">
+                                <span class="font-grey-cascade">
+                                    Parametro anomalo: <span class="">{{alarmFired.parameterName}}</span>
+                                </span>
+
+                                <br />
+                                <span class="font-grey-cascade">
+                                    Valore:    <span class="blink_me">{{alarmFired.result}}</span>
+                                </span>
+                                <br />
+                                <span class="font-grey-cascade">
+                                    Codice colore: {{alarmFired.alarmColor.description}}
+                                </span>
+                                <br />
+                                <span class="font-grey-cascade">
+                                    Rilevato: {{alarmFired.insertDate}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <strong>Allarmi Codice Giallo ({{model.alarmFiredYellowList.length}})</strong>
+                <div class="timeline" style="max-height: 500px; overflow-y: auto;">
+
+                    <div class="timeline-item" ng-repeat="alarmFired in model.alarmFiredYellowList | orderBy: 'insertDate' track by $index">
+                        <div class="timeline-badge">
+                            <img src="http://www.sharonsala.it/wp-content/uploads/2017/02/Foto_profilo_aziendale_10-1024x683.jpg" class="timeline-badge-userpic border-yellow" alt="">
+                        </div>
+
+                        <div class="timeline-body">
+                            <div class="timeline-body-arrow">
+                            </div>
+                            <div class="timeline-body-head">
+                                <div class="timeline-body-head-caption">
+                                    <a href="javascript:;" class="timeline-body-title font-blue-madison">{{alarmFired.patientName}}</a>
+                                </div>
+                                <div class="timeline-body-head-actions">
+                                    <div class="btn-group">
+                                        <button class="btn btn-circle green-haze btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" ng-click="toDetail(alarmFired)">
+                                            Intervieni!
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-body-content">
+                                <span class="font-grey-cascade">
+                                    Parametro anomalo: <span class="">{{alarmFired.parameterName}}</span>
+                                </span>
+
+                                <br />
+                                <span class="font-grey-cascade">
+                                    Valore:    <span class="blink_me">{{alarmFired.result}}</span>
+                                </span>
+                                <br />
+                                <span class="font-grey-cascade">
+                                    Codice colore: {{alarmFired.alarmColor.description}}
+                                </span>
+                                <br />
+                                <span class="font-grey-cascade">
+                                    Rilevato: {{alarmFired.insertDate}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <strong>Allarmi Codice Verde ({{model.alarmFiredGreenList.length}})</strong>
+                <div class="timeline" style="max-height: 500px; overflow-y: auto;">
+
+                    <div class="timeline-item" ng-repeat="alarmFired in model.alarmFiredGreenList | orderBy: 'updateDate' track by $index">
+                        <div class="timeline-badge">
+                            <img src="http://www.sharonsala.it/wp-content/uploads/2017/02/Foto_profilo_aziendale_10-1024x683.jpg" class="timeline-badge-userpic border-green" alt="">
+                        </div>
+
+                        <div class="timeline-body">
+                            <div class="timeline-body-arrow">
+                            </div>
+                            <div class="timeline-body-head">
+                                <div class="timeline-body-head-caption">
+                                    <a href="javascript:;" class="timeline-body-title font-blue-madison">{{alarmFired.patientName}}</a>
+                                </div>
+                                <div class="timeline-body-head-actions">
+                                    <div class="btn-group">
+                                        <button class="btn btn-circle green-haze btn-sm dropdown-toggle" type="button" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" ng-click="toDetail(alarmFired)">
+                                            Intervieni!
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-body-content">
+                                <span class="font-grey-cascade">
+                                    Parametro anomalo: <span class="">{{alarmFired.parameterName}}</span>
+                                </span>
+
+                                <br />
+                                <span class="font-grey-cascade">
+                                    Valore:    <span class="blink_me">{{alarmFired.result}}</span>
+                                </span>
+
+                                <br />
+                                <span class="font-grey-cascade">
+                                    Codice colore: {{alarmFired.alarmColor.description}}
+                                </span>
+                                <br />
+                                <span class="font-grey-cascade">
+                                    Rilevato: {{alarmFired.insertDate}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </uib-tab>
+
+    <uib-tab heading="Allarmi presi in carico">
+        <div class="row">
+            <div class="col-md-12">
+                <br />
+                <button class="btn btn-circle green-haze btn-md" type="button" ng-click="alarmFiredDisabledListNgTable.reload()">
+                    Aggiorna i dati
+                </button>
+                <br />
+                <br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet light no-padding-bottom">
+                    <div class="portlet-title">
+                        <div class="caption font-green-sharp">
+                            <i class="fa fa-list font-green-sharp"></i>
+                            <span class="caption-subject bold">Risultati</span>
+                            <span class="caption-helper">Trovati {{model.alarmFiredDisabledList.length}} elementi {{alarmFiredDisabledListNgTable._settings.total}}</span>
+                        </div>
+                    </div>
+                    <div class="portlet-body" ng-show="model.alarmFiredDisabledList && model.alarmFiredDisabledList.length > 0">
+                        <div class="table-responsive">
+                            <table ng-table="alarmFiredDisabledListNgTable" class="table table-hover table-font-12">
+                                <tr ng-repeat="item in $data track by $index">
+                                    <td data-title="'Paziente'">{{item.patientName}}</td>
+                                    <td data-title="'Parametro'">{{item.parameterName}}</td>
+                                    <td data-title="'Valore rilevato'">{{item.result}}</td>
+                                    <td data-title="'Codice colore'">{{item.alarmColor.description}}</td>
+                                    <td data-title="'Rilevato il'">{{item.insertDate}}</td>
+                                    <td data-title="'Ultimo intervento il'">{{item.updateDate}}</td>
+                                    <td>
+                                        <button class="btn btn-sm" ng-click="toDetail(item, true)">
+                                            Dettagli
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </uib-tab>
+</uib-tabset>

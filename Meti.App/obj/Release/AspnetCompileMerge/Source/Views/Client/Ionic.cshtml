@@ -1,0 +1,40 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+    <link rel="manifest" href="manifest.json">
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/igcom/js/igcom-framework.js"></script>
+    <script src="lib/igcom/js/igcom-zeus.js"></script>
+    <script src="lib/linq/linq.min.js"></script>
+    <script src="lib/ng-cordova-master/dist/ng-cordova.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="app/app.js"></script>
+    <script src="app/controllers/AndamentoCtrl.js"></script>
+    <script src="app/controllers/BugiardinoCtrl.js"></script>
+    <script src="app/controllers/LoginCtrl.js"></script>
+    <script src="app/controllers/ProfiloCtrl.js"></script>
+    <script src="app/controllers/RilevazioneCtrl.js"></script>
+    <script src="app/controllers/VideochiamataCtrl.js"></script>
+    <script src="app/controllers/HelpCtrl.js"></script>
+    <script src="app/services/accountService.js"></script>
+    <script src="app/services/configurationService.js"></script>
+    <script src="app/services/serverRouteMap.js"></script>
+    <script src="app/services/geolocationService.js"></script>
+    <script src="app/services/processInstanceService.js"></script>
+</head>
+<body ng-app="metiMobile">
+    <ion-nav-view></ion-nav-view>
+</body>
+</html>

@@ -1,0 +1,67 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="close()"></button>
+        <h4 class="modal-title">Dettagli monitoraggio</h4>
+    </div>
+
+    <div class="modal-body">
+        <uib-tabset>
+            <uib-tab heading="Informazioni su {{geoLocationModel.comboText}}">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="portlet light profile-sidebar-portlet">
+                            <!--<div class="profile-userpic">
+                                <img src="http://www.sharonsala.it/wp-content/uploads/2017/02/Foto_profilo_aziendale_10-1024x683.jpg" class="img-responsive" alt="">
+                            </div>-->
+                            <div class="profile-usertitle">
+                                <div class="profile-usertitle-name">
+                                    {{geoLocationModel.comboText}}
+                                </div>
+                                <div class="profile-usertitle-job">
+                                    Via
+                                    <br />
+                                    <small>{{geoLocationModel.patient.comboMunicipality}}</small>
+                                    <br /><br />
+                                </div>
+                                <div class="profile-usertitle-job">
+                                    Persone di riferimento
+                                    <br />
+                                    <div ng-repeat="referencePerson in geoLocationModel.referencePersons">
+                                        <small>{{referencePerson.firstname}} {{referencePerson.surname}} ({{referencePerson.mobilePhone}} / {{referencePerson.email}} )</small>
+                                    </div>
+                                    <br /><br />
+                                </div>
+                                <div class="profile-usertitle-job">
+                                    Medici di riferimento
+                                    <br />
+                                    <div ng-repeat="doctor in geoLocationModel.doctors">
+                                        <small>{{doctor.firstname}} {{doctor.surname}} ({{doctor.mobilePhone}} / {{doctor.email}} )</small>
+                                    </div>
+                                    <br /><br />
+
+                                </div>
+                                <div class="profile-usertitle-job">
+                                    Parametri Monitorati
+                                    <br />
+                                    <small ng-repeat="item in geoLocationModel.process.parameters">
+                                        {{item.name}}
+                                        <br />
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab heading="Monitoraggio LIVE">
+                <iframe ng-src="{{getPatientDashboardUrl(geoLocationModel.processInstanceId)}}" style="border: 0; width: 100%; min-height: 768px;"></iframe>                
+            </uib-tab>
+
+        </uib-tabset>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn default" ng-click="close()">Chiudi</button>
+    </div>
+</div>

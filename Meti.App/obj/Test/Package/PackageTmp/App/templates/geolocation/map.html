@@ -1,0 +1,58 @@
+﻿<!--<div kendo-map="map"
+     k-center="[41.8734262, 12.4607732]"
+     k-zoom="9"
+     k-layers="[{
+                     type: 'bing',
+                     imagerySet: 'aerialWithLabels',
+                     key: 'AqaPuZWytKRUA8Nm5nqvXHWGL8BDCXvK8onCl2PkC581Zp3T_fYAQBiwIphJbRAK'
+                 }, {
+                     type: 'marker',
+                     dataSource: model.geoLocationList,
+                     locationField: 'latlng',
+                     titleField: 'comboText'
+                 }]"
+     k-marker-click="markerOnClick"
+     k-pan-end="onPanEnd"
+     style="border: 0; min-height: 768px; width: 100%">
+</div>-->
+<!--<iframe src="https://www.google.com/maps/d/embed?mid=1TzxSt4QkJ9iJh5xxya4wmT0eCIFRDkU0" style="border: 0; min-height: 768px; width: 100%"></iframe>-->
+<style>
+    .k-map .k-i-marker-custom-marker {
+        background-image: url('https://demos.telerik.com/kendo-ui/content/shared/images/we-are-here.png');
+        background-size: 50px;
+        width: 50px;
+        height: 50px;
+    }
+</style>
+<div class="page-head">
+
+    <div class="page-title">
+        <h1>
+            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+            Geolocalizzazione
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <label class="label-sm">Paziente</label>
+        <select kendo-combo-box
+                k-placeholder="'Cerca un paziente..'"
+                k-data-text-field="'patient.comboTextAddress'"
+                k-data-value-field="'id'"
+                k-filter="'contains'"
+                k-auto-bind="true"
+                k-data-source="model.geoLocationList"
+                k-ng-model="model.geoLocationSelected"
+                style="width: 100%">
+            <option value=""></option>
+        </select>
+    </div>
+</div>
+<br />
+<div class="maps">
+    <div id="map" style="border: 0; width: 100%"></div>
+</div>
+
+
+

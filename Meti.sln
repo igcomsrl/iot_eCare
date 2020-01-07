@@ -1,0 +1,98 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meti.App", "Meti.App\Meti.App.csproj", "{83F41051-F936-4947-8340-3D894E0EA5FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meti", "Meti\Meti.csproj", "{31B81A02-566D-4ED1-B806-C99C348F6A92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meti.Maintenance", "Meti.Maintenance\Meti.Maintenance.csproj", "{0D0AE220-B4FC-4891-BC84-44F84460CBD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Libraries", "_Libraries", "{CE76AE17-7280-4FC2-9B43-F5CE7983A5DD}"
+	ProjectSection(SolutionItems) = preProject
+		_Libraries\HibernatingRhinos.Profiler.Appender.dll = _Libraries\HibernatingRhinos.Profiler.Appender.dll
+		_Libraries\Igcom.Sms.dll = _Libraries\Igcom.Sms.dll
+		_Libraries\MateSharp.Framework.dll = _Libraries\MateSharp.Framework.dll
+		_Libraries\MateSharp.RoleClaim.dll = _Libraries\MateSharp.RoleClaim.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Schemas", "_Schemas", "{7DA13B51-550F-4597-B590-751F1DD8352C}"
+	ProjectSection(SolutionItems) = preProject
+		_Schemas\nhibernate-configuration.xsd = _Schemas\nhibernate-configuration.xsd
+		_Schemas\nhibernate-mapping.xsd = _Schemas\nhibernate-mapping.xsd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Notes", "_Notes", "{FA560679-6BF8-4296-8153-6384079BF799}"
+	ProjectSection(SolutionItems) = preProject
+		Directory protetta download- raspberryPi.txt = Directory protetta download- raspberryPi.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meti.Tests", "Meti.Tests\Meti.Tests.csproj", "{39F7E921-E330-4DA9-B538-98B1F68D5D8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Ronciglione|Any CPU = Ronciglione|Any CPU
+		Test|Any CPU = Test|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83F41051-F936-4947-8340-3D894E0EA5FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83F41051-F936-4947-8340-3D894E0EA5FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83F41051-F936-4947-8340-3D894E0EA5FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83F41051-F936-4947-8340-3D894E0EA5FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83F41051-F936-4947-8340-3D894E0EA5FB}.Ronciglione|Any CPU.ActiveCfg = Ronciglione|Any CPU
+		{83F41051-F936-4947-8340-3D894E0EA5FB}.Ronciglione|Any CPU.Build.0 = Ronciglione|Any CPU
+		{83F41051-F936-4947-8340-3D894E0EA5FB}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{83F41051-F936-4947-8340-3D894E0EA5FB}.Test|Any CPU.Build.0 = Test|Any CPU
+		{31B81A02-566D-4ED1-B806-C99C348F6A92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31B81A02-566D-4ED1-B806-C99C348F6A92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31B81A02-566D-4ED1-B806-C99C348F6A92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31B81A02-566D-4ED1-B806-C99C348F6A92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31B81A02-566D-4ED1-B806-C99C348F6A92}.Ronciglione|Any CPU.ActiveCfg = Ronciglione|Any CPU
+		{31B81A02-566D-4ED1-B806-C99C348F6A92}.Ronciglione|Any CPU.Build.0 = Ronciglione|Any CPU
+		{31B81A02-566D-4ED1-B806-C99C348F6A92}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{31B81A02-566D-4ED1-B806-C99C348F6A92}.Test|Any CPU.Build.0 = Test|Any CPU
+		{0D0AE220-B4FC-4891-BC84-44F84460CBD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D0AE220-B4FC-4891-BC84-44F84460CBD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D0AE220-B4FC-4891-BC84-44F84460CBD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D0AE220-B4FC-4891-BC84-44F84460CBD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D0AE220-B4FC-4891-BC84-44F84460CBD0}.Ronciglione|Any CPU.ActiveCfg = Ronciglione|Any CPU
+		{0D0AE220-B4FC-4891-BC84-44F84460CBD0}.Ronciglione|Any CPU.Build.0 = Ronciglione|Any CPU
+		{0D0AE220-B4FC-4891-BC84-44F84460CBD0}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{0D0AE220-B4FC-4891-BC84-44F84460CBD0}.Test|Any CPU.Build.0 = Test|Any CPU
+		{39F7E921-E330-4DA9-B538-98B1F68D5D8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39F7E921-E330-4DA9-B538-98B1F68D5D8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39F7E921-E330-4DA9-B538-98B1F68D5D8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39F7E921-E330-4DA9-B538-98B1F68D5D8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39F7E921-E330-4DA9-B538-98B1F68D5D8E}.Ronciglione|Any CPU.ActiveCfg = Ronciglione|Any CPU
+		{39F7E921-E330-4DA9-B538-98B1F68D5D8E}.Ronciglione|Any CPU.Build.0 = Ronciglione|Any CPU
+		{39F7E921-E330-4DA9-B538-98B1F68D5D8E}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{39F7E921-E330-4DA9-B538-98B1F68D5D8E}.Test|Any CPU.Build.0 = Test|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6C649901-546A-4F6E-94D6-44305ADD3E27}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://192.168.33.200:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Meti.App\\Meti.App.csproj
+		SccProjectName1 = Meti.App
+		SccLocalPath1 = Meti.App
+		SccProjectUniqueName2 = Meti.Maintenance\\Meti.Maintenance.csproj
+		SccProjectName2 = Meti.Maintenance
+		SccLocalPath2 = Meti.Maintenance
+		SccProjectUniqueName3 = Meti\\Meti.csproj
+		SccProjectName3 = Meti
+		SccLocalPath3 = Meti
+		SccProjectUniqueName4 = Meti.Tests\\Meti.Tests.csproj
+		SccProjectName4 = Meti.Tests
+		SccLocalPath4 = Meti.Tests
+	EndGlobalSection
+EndGlobal

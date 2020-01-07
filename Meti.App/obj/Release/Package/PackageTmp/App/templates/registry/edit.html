@@ -1,0 +1,384 @@
+﻿<style>
+    .modal {
+        z-index: 11000 !important;
+    }
+</style>
+
+<form name="registryEditForm" novalidate autocomplete="off">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()"></button>
+            <h4 class="modal-title" ng-bind="title"></h4>
+        </div>
+
+        <div class="modal-body">
+            <div class="note note-info note-bordered">
+                <p>{{::$root.validationMessages.fieldsStarRequired}}</p>
+            </div>
+
+            <uib-tabset>
+                <uib-tab heading="Anagrafica">
+                    <div class="text-center">
+                        <!--Medico-->
+                        <br />
+                        <div ng-show="registryModel.registryType.id == 2">
+                            <i class="fa fa-user-md fa-4x" aria-hidden="true"></i>
+                        </div>
+                        <div ng-show="registryModel.registryType.id == 1">
+                            <i class="fa fa-user fa-4x" aria-hidden="true"></i>
+                        </div>
+                        <br />
+                        <strong>{{registryModel.registryType.description}}</strong>
+                        <br />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="label-sm">Cognome*</label>
+                            <input type="text"
+                                   name="cognome"
+                                   class="form-control input-sm"
+                                   ng-model="registryModel.surname"
+                                   required
+                                   ng-maxlength="255">
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.cognome.$dirty">
+                                <div ng-show="registryEditForm.cognome.$error.required" class="text-invalid">
+                                    {{::$root.validationMessages.required}}
+                                </div>
+                                <div ng-show="registryEditForm.cognome.$error.maxlength" class="text-invalid">
+                                    {{::$root.validationMessages.maxLength}} 255
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Nome*</label>
+                            <input type="text"
+                                   name="nome"
+                                   class="form-control input-sm"
+                                   ng-model="registryModel.firstname"
+                                   required
+                                   ng-maxlength="255">
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.nome.$dirty">
+                                <div ng-show="registryEditForm.nome.$error.required" class="text-invalid">
+                                    {{::$root.validationMessages.required}}
+                                </div>
+                                <div ng-show="registryEditForm.nome.$error.maxlength" class="text-invalid">
+                                    {{::$root.validationMessages.maxLength}} 255
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Sesso*</label>
+                            <select class="form-control input-sm"
+                                    name="sesso"
+                                    ng-model="registryModel.sex"
+                                    required
+                                    ng-options="item as item.description for item in sexList track by item.id">
+                                <option value=""> - </option>
+                            </select>
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.sesso.$dirty">
+                                <div ng-show="registryEditForm.sesso.$error.required" class="text-invalid">
+                                    {{::$root.validationMessages.required}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Peso (kg)</label>
+                            <input type="text"
+                                   name="peso"
+                                   class="form-control input-sm"
+                                   ng-model="registryModel.weight"
+                                   ng-maxlength="255">
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.peso.$dirty">
+                                <div ng-show="registryEditForm.nome.$error.maxlength" class="text-invalid">
+                                    {{::$root.validationMessages.maxLength}} 255
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Altezza (cm)</label>
+                            <input type="text"
+                                   name="altezza"
+                                   class="form-control input-sm"
+                                   ng-model="registryModel.height"
+                                   ng-maxlength="255">
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.altezza.$dirty">
+                                <div ng-show="registryEditForm.altezza.$error.maxlength" class="text-invalid">
+                                    {{::$root.validationMessages.maxLength}} 255
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Tipologia*</label>
+                            <select class="form-control input-sm"
+                                    name="tipologia"
+                                    ng-model="registryModel.registryType"
+                                    required
+                                    ng-options="item as item.description for item in registryTypeList track by item.id">
+                                <option value=""> - </option>
+                            </select>
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.tipologia.$dirty">
+                                <div ng-show="registryEditForm.tipologia.$error.required" class="text-invalid">
+                                    {{::$root.validationMessages.required}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!--<div class="form-group move-down">
+                                <label for="Autocomplete">Generic Autocomplete</label>
+                                <input type="text" id="Autocomplete" class="form-control" ng-autocomplete ng-model="result1" />
+                            </div>-->
+                            <label>Comune nascita</label>
+                            <!--<input type="text"
+                            name="comuneNascita"
+                            class="form-control input-sm"
+                            ng-autocomplete
+                            ng-model="registryModel.birthPlace"
+                            ng-maxlength="255">-->
+                            <input type="text"
+                                   name="comuneNascita"
+                                   class="form-control input-sm"
+                                   ng-model="registryModel.birthPlace"
+                                   ng-maxlength="255">
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.comuneNascita.$dirty">
+                                <div ng-show="registryEditForm.comuneNascita.$error.maxlength" class="text-invalid">
+                                    {{::$root.validationMessages.maxLength}} 255
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label class="kendo-date-material-sm">Data Nascita</label>
+                            <input kendo-date-picker
+                                   name="dataNascita"
+                                   ng-model="registryModel.birthDate"
+                                   k-format="'dd/MM/yyyy'"
+                                   style="width: 100%;">
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.dataNascita.$dirty">
+                                <div ng-show="registryEditForm.dataNascita.$error.required" class="text-invalid">
+                                    {{::localization.common.campoObbligatorio}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <label>Email*</label>
+                            <input type="email"
+                                   name="email"
+                                   required
+                                   class="form-control input-sm"
+                                   ng-model="registryModel.email"
+                                   ng-maxlength="255">
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.email.$dirty">
+                                <div ng-show="registryEditForm.email.$error.maxlength" class="text-invalid">
+                                    {{::$root.validationMessages.maxLength}} 255
+                                </div>
+                                <div ng-show="registryEditForm.email.$error.email" class="text-invalid">
+                                    {{::$root.validationMessages.emailFormatInvalid}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Cellulare</label>
+                            <input type="text"
+                                   name="cellulare"
+                                   class="form-control input-sm"
+                                   ng-model="registryModel.mobilePhone"
+                                   ng-maxlength="255">
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.cellulare.$dirty">
+                                <div ng-show="registryEditForm.cellulare.$error.maxlength" class="text-invalid">
+                                    {{::$root.validationMessages.maxLength}} 255
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Telefono</label>
+                            <input type="text"
+                                   name="telefono"
+                                   class="form-control input-sm"
+                                   ng-model="registryModel.phone"
+                                   ng-maxlength="255">
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.telefono.$dirty">
+                                <div ng-show="registryEditForm.telefono.$error.maxlength" class="text-invalid">
+                                    {{::$root.validationMessages.maxLength}} 255
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Comune residenza</label>
+                            <input type="text"
+                                   name="comuneResidenza"
+                                   class="form-control input-sm"
+                                   ng-model="registryModel.municipalityPlace"
+                                   ng-maxlength="255">
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.comuneResidenza.$dirty">
+                                <div ng-show="registryEditForm.comuneResidenza.$error.maxlength" class="text-invalid">
+                                    {{::$root.validationMessages.maxLength}} 255
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Indirizzo residenza</label>
+                            <input type="text"
+                                   name="indirizzoResidenza"
+                                   class="form-control input-sm"
+                                   ng-model="registryModel.municipalityPlaceAddress"
+                                   ng-maxlength="255">
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.indirizzoResidenza.$dirty">
+                                <div ng-show="registryEditForm.indirizzoResidenza.$error.maxlength" class="text-invalid">
+                                    {{::$root.validationMessages.maxLength}} 255
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Cap residenza</label>
+                            <input type="text"
+                                   name="capResidenza"
+                                   class="form-control input-sm"
+                                   ng-model="registryModel.municipalityPlaceCap"
+                                   ng-maxlength="255">
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.capResidenza.$dirty">
+                                <div ng-show="registryEditForm.capResidenza.$error.maxlength" class="text-invalid">
+                                    {{::$root.validationMessages.maxLength}} 255
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Domicilio-->
+                    <div ng-show="true">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Comune domicilio</label>
+                                <input type="text"
+                                       name="comuneDomicilio"
+                                       class="form-control input-sm"
+                                       ng-model="registryModel.domicilePlace"
+                                       ng-maxlength="255">
+                                <div ng-show="registryEditForm.$submitted || registryEditForm.comuneDomicilio.$dirty">
+                                    <div ng-show="registryEditForm.comuneDomicilio.$error.maxlength" class="text-invalid">
+                                        {{::$root.validationMessages.maxLength}} 255
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Indirizzo domicilio</label>
+                                <input type="text"
+                                       name="indirizzoDomicilio"
+                                       class="form-control input-sm"
+                                       ng-model="registryModel.domicilePlaceAddress"
+                                       ng-maxlength="255">
+                                <div ng-show="registryEditForm.$submitted || registryEditForm.indirizzoDomicilio.$dirty">
+                                    <div ng-show="registryEditForm.indirizzoDomicilio.$error.maxlength" class="text-invalid">
+                                        {{::$root.validationMessages.maxLength}} 255
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Cap domicilio</label>
+                                <input type="text"
+                                       name="capDomicilio"
+                                       class="form-control input-sm"
+                                       ng-model="registryModel.domicilePlaceCap"
+                                       ng-maxlength="255">
+                                <div ng-show="registryEditForm.$submitted || registryEditForm.capDomicilio.$dirty">
+                                    <div ng-show="registryEditForm.capDomicilio.$error.maxlength" class="text-invalid">
+                                        {{::$root.validationMessages.maxLength}} 255
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Latitudine (Residenza)</label>
+                            <input type="text"
+                                   name="latidudine"
+                                   class="form-control input-sm"
+                                   ng-model="registryModel.latitude"
+                                   ng-maxlength="255"
+                                   disabled>
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.latidudine.$dirty">
+                                <div ng-show="registryEditForm.latidudine.$error.maxlength" class="text-invalid">
+                                    {{::$root.validationMessages.maxLength}} 255
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Longitudine (Residenza)</label>
+                            <input type="text"
+                                   name="longitudine"
+                                   class="form-control input-sm"
+                                   ng-model="registryModel.longitude"
+                                   ng-maxlength="255"
+                                   disabled>
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.longitudine.$dirty">
+                                <div ng-show="registryEditForm.longitudine.$error.maxlength" class="text-invalid">
+                                    {{::$root.validationMessages.maxLength}} 255
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4" ng-show="isMedico">
+                            <label>Codice medico regionale</label>
+                            <input type="text"
+                                   name="codiceMedicoRegionale"
+                                   class="form-control input-sm"
+                                   ng-model="registryModel.regionalMedicalCode"
+                                   ng-maxlength="255">
+                            <div ng-show="registryEditForm.$submitted || registryEditForm.codiceMedicoRegionale.$dirty">
+                                <div ng-show="registryEditForm.codiceMedicoRegionale.$error.maxlength" class="text-invalid">
+                                    {{::$root.validationMessages.maxLength}} 255
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div>
+                                <label>Documenti</label>
+                                <input name="files"
+                                       type="file"
+                                       kendo-upload
+                                       disabled
+                                       k-async="{ saveUrl: 'save', removeUrl: 'remove', autoUpload: true }"
+                                       k-select="onSelect" />
+                            </div>
+                        </div>
+                    </div>
+                </uib-tab>
+
+                <uib-tab heading="Cartella clinica">
+                    <div ng-include="'App/templates/registry/medicalRecords.html'"></div>
+                </uib-tab>
+
+                <uib-tab heading="Processi di monitoraggio associati">
+                    <div ng-include="'App/templates/registry/processInstance.html'"></div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn default" ng-click="cancel()">Annulla</button>
+            <button type="submit" data-dismiss="modal" class="btn green" ng-click="save()">Salva</button>
+        </div>
+    </div>
+</form>

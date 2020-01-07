@@ -1,0 +1,160 @@
+﻿<div class="page-head">
+
+    <div class="page-title">
+        <h1>
+            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+            Processi monitorati <small>cerca, crea, modifica o elimina un Processo di monitoraggio</small>
+        </h1>
+    </div>
+</div>
+<!--<div class="note note-success note-bordered">
+    <p>
+        Messaggi informativi per l'utente
+    </p>
+</div>-->
+
+<form name="processInstanceSearchForm" ng-submit="processInstanceListNgTable.reload()" novalidate autocomplete="off">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-filter font-green-sharp"></i>
+                        <span class="caption-subject bold">Filtri di ricerca </span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                            <button type="button" class="btn btn-primary" ui-sref="shell.processInstance-create">
+                                <i class="fa fa-plus"></i> Crea
+                            </button>
+                            <button type="button" class="btn btn-primary" ng-click="clearFilter()">
+                                <i class="fa fa-trash"></i> Pulisci filtri
+                            </button>
+                            <button type="submit" class="btn btn-primary" ng-click="processInstanceListNgTable.reload()" ng-disabled="model.isFetchBusy">
+                                <i class="fa fa-search" ng-class="model.isFetchBusy ? 'fa fa-spinner fa-spin': 'fa fa-search'"></i> Ricerca
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portlet-body">
+                    <div class="row">
+                        <!--<div class="col-md-4">
+                            <label>Nome</label>
+                            <input type="text" name="nome" class="form-control input-sm" ng-model="model.name">
+                        </div>-->
+                        <div class="col-md-4">
+                            <label class="label-sm">Dottore</label>
+                            <!--<select class="form-control input-sm"
+                                    name="doctor"
+                                    ng-model="model.doctor"
+                                    ng-options="item as item.comboText for item in model.doctorList track by item.id">
+                                <option value=""> - </option>
+                            </select>-->
+                            <select kendo-combo-box
+                                    k-placeholder="'Filtra per dottore..'"
+                                    k-data-text-field="'comboText'"
+                                    k-data-value-field="'id'"
+                                    k-filter="'contains'"
+                                    k-auto-bind="true"
+                                    k-data-source="model.doctorList"
+                                    k-ng-model="model.doctor"
+                                    style="width: 100%">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="label-sm">Paziente</label>
+                            <!--<select class="form-control input-sm"
+                                    name="patient"
+                                    ng-model="model.patient"
+                                    ng-options="item as item.comboText for item in model.patientList track by item.id">
+                                <option value=""> - </option>
+                            </select>-->
+                            <select kendo-combo-box
+                                    k-placeholder="'Filtra per paziente..'"
+                                    k-data-text-field="'comboText'"
+                                    k-data-value-field="'id'"
+                                    k-filter="'contains'"
+                                    k-auto-bind="true"
+                                    k-data-source="model.patientList"
+                                    k-ng-model="model.patient"
+                                    style="width: 100%">
+                                <option value=""></option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="label-sm">Stato</label>
+                            <select class="form-control input-sm"
+                                    name="patient"
+                                    ng-model="model.processInstanceState"
+                                    ng-options="item as item.description for item in model.processInstanceStateList track by item.id">
+                                <option value=""> - </option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light no-padding-bottom">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-list font-green-sharp"></i>
+                        <span class="caption-subject bold">Risultati di ricerca</span>
+                        <span class="caption-helper">Trovati {{model.processInstanceList.length}} elementi {{processInstanceListNgTable._settings.total}}</span>
+                    </div>
+                </div>
+                <div class="portlet-body" ng-show="model.processInstanceList && model.processInstanceList.length > 0">
+                    <div class="table-responsive">
+                        <table ng-table="processInstanceListNgTable" class="table table-hover table-font-12">
+
+                            <tr ng-repeat="item in $data track by item.id">
+                                <td data-title="'Processo'">{{item.processName}}</td>
+                                <td data-title="'Paziente'">{{item.patient.comboText}}</td>
+                                <td data-title="'Dottore'">{{item.doctorsComboText}}</td>
+                                <td data-title="'Persone riferimento'">{{item.referencePersonsComboText}}</td>
+                                <!--<td data-title="'Abilitato?'" sortable="'IsEnabled'">
+                                    <span ng-show="item.isEnabled" class="label label label-success">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                    <span ng-show="!item.isEnabled">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </span>
+                                </td>-->
+                                <!--<td data-title="'Inserita il'" sortable="'InsertDate'">{{ moment(item.insertDate).format('DD/MM/YY hh:mm')}}</td>-->
+                                <td data-title="'Stato'">{{item.processInstanceState.description}}</td>
+                                <td>
+                                    <div class="btn-group inline pull-right" data-toggle="buttons-checkbox">
+                                        <div class="btn btn-sm btn-primary" uib-tooltip="Geolocalizzazione" ng-click="openGeolocation(item.id)">
+                                            <i class="fa fa-map-marker"></i>
+                                        </div>
+                                        <div class="btn btn-sm btn-primary" uib-tooltip="Modifica" ng-click="navigateUpdate(item)">
+                                            <i class="fa fa-pencil-square-o"></i>
+                                        </div>
+                                        <!--<div class="btn btn-sm btn-danger"
+                                             disabled
+                                             uib-tooltip="Elimina"
+                                             ng-confirm-title="Cancellazione Processo"
+                                             ng-confirm-smalltitle=""
+                                             ng-confirm-message="Sei sicuro di voler cancellare {{item.name}}?"
+                                             ng-confirm-btn-ok-title="Si"
+                                             ng-confirm-btn-cancel-title="No"
+                                             ng-confirm-click="delete(item)">
+                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                        </div>-->
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

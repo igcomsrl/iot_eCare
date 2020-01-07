@@ -1,0 +1,115 @@
+﻿<div class="page-head">
+    
+    <div class="page-title">
+        <h1>Utenti di sistema <small>cerca, crea, modifica o elimina un utente</small></h1>
+    </div>
+</div>
+<!--<div class="note note-success note-bordered">
+    <p>
+        Messaggi informativi per l'utente
+    </p>
+</div>-->
+
+<form name="userSearchForm" ng-submit="userListNgTable.reload()" novalidate autocomplete="off">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-filter font-green-sharp"></i>
+                        <span class="caption-subject bold">Filtri di ricerca </span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                            <button type="button" class="btn btn-primary" ng-click="openEdit()">
+                                <i class="fa fa-plus"></i> Crea
+                            </button>
+                            <button type="button" class="btn btn-primary" ng-click="clearFilter()">
+                                <i class="fa fa-trash"></i> Pulisci filtri
+                            </button>
+                            <button type="submit" class="btn btn-primary" ng-click="userListNgTable.reload()" ng-disabled="model.isFetchBusy">
+                                <i class="fa fa-search" ng-class="model.isFetchBusy ? 'fa fa-spinner fa-spin': 'fa fa-search'"></i> Ricerca
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Username</label>
+                            <input type="text" name="Username" class="form-control input-sm" ng-model="model.userName">
+                        </div>
+                        <div class="col-md-3">
+                            <label>Cognome</label>
+                            <input type="text" name="cognome" class="form-control input-sm" ng-model="model.surname">
+                        </div>
+                        <div class="col-md-3">
+                            <label>Nome</label>
+                            <input type="text" name="nome" class="form-control input-sm" ng-model="model.firstname">
+                        </div>
+                        <div class="col-md-3">
+                            <label>Email</label>
+                            <input type="text" name="email" class="form-control input-sm" ng-model="model.email">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light no-padding-bottom">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-list font-green-sharp"></i>
+                        <span class="caption-subject bold">Risultati di ricerca</span>
+                        <span class="caption-helper">Trovati {{model.userList.length}} elementi {{userListNgTable._settings.total}}</span>
+                    </div>
+                </div>
+                <div class="portlet-body" ng-show="model.userList && model.userList.length > 0">
+                    <div class="table-responsive">
+                        <table ng-table="userListNgTable" class="table table-hover table-font-12">
+
+                            <tr ng-repeat="item in $data track by item.id">
+                                <td data-title="'Username'" sortable="'UserName'">{{item.username}}</td>
+                                <td data-title="'Nome'" sortable="'Firstname'">{{item.firstname}}</td>
+                                <td data-title="'Cognome'" sortable="'Surname'">{{item.surname}}</td>
+                                <td data-title="'Email'" sortable="'Email'">{{item.email}}</td>
+                                <td>
+                                    <div class="btn-group inline pull-right" data-toggle="buttons-checkbox">
+                            
+                                        <div class="btn btn-sm btn-primary" uib-tooltip="Modifica" ng-click="openEdit(item)">
+                                            <i class="fa fa-pencil-square-o"></i>
+                                        </div>
+                                        <div class="btn btn-sm btn-primary"
+                                             uib-tooltip="Nuova Password via email"
+                                             ng-confirm-title="Generazione nuova password"
+                                             ng-confirm-smalltitle=""
+                                             ng-confirm-message="Sei sicuro di voler generare una nuova password? La vecchia password non sarà più utilizzabile."
+                                             ng-confirm-btn-ok-title="Si, invia la nuova password all indirizzo: {{item.email}}"
+                                             ng-confirm-btn-cancel-title="No"
+                                             ng-confirm-click="resetPassword(item)">
+                                            <i class="fa fa-key" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="btn btn-sm btn-danger"
+                                             uib-tooltip="Elimina"                                             
+                                             ng-confirm-title="Cancellazione Utente"
+                                             ng-confirm-smalltitle=""
+                                             ng-confirm-message="Sei sicuro di voler cancellare {{item.firstname}} {{item.surname}} - {{item.userName}}?"
+                                             ng-confirm-btn-ok-title="Si"
+                                             ng-confirm-btn-cancel-title="No"
+                                             ng-confirm-click="delete(item)">
+                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

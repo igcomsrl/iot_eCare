@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Concesso in licenza a norma dell'EUPL, versione 1.2. 2019
+-->
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Meti" namespace="Meti.Domain.Models">
+
+  <class name="HealthRisk" table="healthRisks">
+    <id name="Id" column="Id" type="guid">
+      <generator class="guid.comb" />
+    </id>
+
+    <!--Entity Mapping-->
+    <property name="Type" />
+    <property name="Level" />    
+    <property name="Rating" length="255"/>
+    <property name="StartDate"/>
+    <property name="EndDate"/>
+    <many-to-one name="Registry" column="Registry_Id" lazy="proxy"/>
+
+    <!--Entity Base -->
+    <property name="InsertDate" />
+    <property name="UpdateDate" />
+    <property name="InsertUser" />
+    <property name="UpdateUser" />
+  </class>
+</hibernate-mapping>

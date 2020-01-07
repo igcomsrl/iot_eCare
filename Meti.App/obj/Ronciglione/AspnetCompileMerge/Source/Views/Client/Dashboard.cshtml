@@ -1,0 +1,51 @@
+﻿@using System.Web.Optimization;
+<!DOCTYPE html>
+
+<html lang="it" ng-app="app">
+<head>
+    <title>Sempre Vicini (Codename IGCOM: METI)</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="IGCOM Srl" name="author" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&amp;subset=all" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1tmlFrQPkUNvAooxjoV6yBiJQukIltVo&libraries=places"></script>
+    <link href="~/Content/node_modules/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    @Styles.Render("~/Dist/css")
+</head>
+<body data-apiEndPoint="@ViewBag.apiEndpoint"
+      data-zeusEndPoint="@ViewBag.zeusEndpoint"
+      data-siteRootTilde="@ViewBag.siteRootTilde"
+      data-isDebug="@ViewBag.isDebug"
+      data-alarmFiredPooling="@ViewBag.alarmFiredPooling"
+      data-alarmFiredSoundServerPath="@ViewBag.alarmFiredSoundServerPath"
+      data-enableAlarmFiredSound="@ViewBag.enableAlarmFiredSound"     
+      data-grafanaConsoleUrl="@ViewBag.grafanaConsoleUrl"     
+      data-noderedConsoleUrl="@ViewBag.noderedConsoleUrl"   
+      data-artificialIntelligenceUrl="@ViewBag.artificialIntelligenceUrl"   
+      data-grafanaConsoleRefreshTime="@ViewBag.grafanaConsoleRefreshTime"
+      data-softwareVersion="@ViewBag.softwareVersion"
+      
+      @*class="page-md page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo"*@
+      class="page-boxed page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-sidebar-closed-hide-logo">
+
+<div ui-view>
+    @Html.Partial("_splash")
+</div>
+
+<script src="~/Content/metronic/assets/global/plugins/jquery.min.js"></script>
+@Scripts.Render("~/Dist/js")
+@Scripts.Render("~/Dist/angularApp")
+@Scripts.Render("~/Dist/templates/app")
+@Scripts.Render("~/Dist/kendoUi")
+
+<script>
+    jQuery(document).ready(function () {
+        Metronic.init();
+        Demo.init(); 
+    });
+</script>
+</body>
+</html>

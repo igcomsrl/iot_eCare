@@ -1,0 +1,125 @@
+﻿<style>
+    .login {
+        background-color: transparent !important;
+    }
+    .content-form {
+        background-color: #6c7a8d !important
+    }
+        .login .logo {
+            margin: 10px auto 10px auto;
+        }
+
+    .login .content h3 {
+        color: white;
+    }
+
+    .fontLogo {
+        font-size: 7em;
+        -webkit-text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
+        text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
+        text-transform: uppercase;
+        color: black;
+    }
+</style>
+<div class="login" >
+    <div class="logo animated slideInRight">
+        <a>
+            <!--<img ng-src="{{$root.siteRootTilde}}Content/app/images/GIOMI_Deutschland_logo_Web_White.png"
+                 class="logo-default"
+                 style="width: 250px; margin-top: 9px;"
+                 onerror="this.style.display='none'" />-->
+        </a>
+        <div class="fontLogo">
+           SEMPRE VICINI <div style=" font-size: 18px;"> (Demo)</div>
+        </div>
+    </div>
+
+    <div ng-if="!model.isLoginReady" class="center-absolute">
+        <br />
+        <div class="margin-top-10" style="display: block;">
+            <i class="fa fa-spinner fa-inverse fa-spin fa-5x margin-top-md margin-left-lg"></i>
+        </div>
+        <br />
+    </div>
+
+    <div class="menu-toggler sidebar-toggler">
+    </div>
+
+
+
+    <div class="content animated slideInLeft content-form" ng-show="model.isLoginReady" >
+        <form name="loginForm" novalidate ng-show="model.loginFormVisible" autocomplete="off" >
+            <h3 class="form-title">Credenziali di accesso</h3>
+            <div class="alert alert-danger display-hide">
+                <button type="button" class="close" data-close="alert"></button>
+                <span>
+                    Inserisci username e password
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9"> Username </label>
+                <div class="input-icon">
+                    <i class="fa fa-user"></i>
+                    <input class="form-control placeholder-no-fix" type="text" placeholder="Username" name="username" ng-model="model.username" ng-focus="true" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">Password</label>
+                <div class="input-icon">
+                    <i class="fa fa-lock"></i>
+                    <input class="form-control placeholder-no-fix" type="password" placeholder="Password" name="password" ng-model="model.password" />
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn blue pull-right" ng-click="login()" ng-disabled="model.isBusy">
+                    <i ng-class="model.isBusy ? 'fa fa-spinner fa-spin active': 'fa fa-sign-in'"></i>
+                    <span ng-show="!model.isBusy">Login</span>
+                    <span ng-show="model.isBusy">Caricamento in corso...</span>
+                </button>
+            </div>
+
+            <div class="forget-password">
+                <h4>Password dimenticata?</h4>
+                <p>
+                   Clicca <a ng-click="showForgotPasswordForm()" style="color:lightgreen">QUI</a> per ottenere una nuova password                    
+                </p>
+            </div>
+            <div class="create-account" >
+                <p>
+                    Sviluppato da <a href="http://www.igcom.it" style="color:lightgreen">IGCOM Srl</a> -  Società del Gruppo GIOMI SPA
+                </p>
+                <!--<p style="font-size: 10px">
+                    Per garantire una corretta funzionalità raccomandiamo:
+                    <a href="https://www.google.it/intl/it/chrome/?brand=CHBD&gclid=CjwKCAiAiarfBRASEiwAw1tYv2q-5SmB_rpH-cZkMUg3LuDSdn01LwfTZos_FHBumH4MQYTQZHGxqhoCvFoQAvD_BwE&gclsrc=aw.ds">
+                        <i class="fa fa-chrome"></i> Google Chrome
+                    </a>
+                </p>-->
+            </div>
+        </form>
+
+        <form name="forgotPasswordForm" ng-show="model.forgotPasswordFormVisible" novalidate autocomplete="off">
+            <h3>Password dimenticata?</h3>
+            <p>
+                Inserisci il tuo Username..
+            </p>
+            <div class="form-group">
+                <div class="input-icon">
+                    <i class="fa fa-user"></i>
+                    <input class="form-control placeholder-no-fix" type="text" placeholder="Username" name="username" ng-model="model.username" />
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="button" ng-click="showloginForm()" class="btn">
+                    <i class="m-icon-swapleft"></i> Indietro
+                </button>
+                <button type="submit" class="btn blue pull-right" ng-click="resetPassword()" ng-disabled="model.isBusy">
+                    <i ng-class="model.isBusy ? 'fa fa-spinner fa-spin active': 'fa fa-sign-in'"></i> Recupera
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>

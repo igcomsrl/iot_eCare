@@ -1,0 +1,13 @@
+﻿extensions: designer.cs generated.cs
+extensions: .cs .cpp .h
+//Concesso in licenza a norma dell'EUPL, versione 1.2. 2019
+extensions: .aspx .ascx
+<%-- 
+Concesso in licenza a norma dell'EUPL, versione 1.2. 2019
+--%>
+extensions: .vb
+'Concesso in licenza a norma dell'EUPL, versione 1.2. 2019
+extensions:  .xml .config .xsd
+<!--
+Concesso in licenza a norma dell'EUPL, versione 1.2. 2019
+-->

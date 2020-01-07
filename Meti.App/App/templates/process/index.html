@@ -1,0 +1,101 @@
+﻿<div class="page-head">
+
+    <div class="page-title">
+        <h1>
+            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+            Processi Template <small>cerca, crea, modifica o elimina un processo template</small>
+        </h1>
+    </div>
+</div>
+<!--<div class="note note-success note-bordered">
+    <p>
+        Messaggi informativi per l'utente
+    </p>
+</div>-->
+
+<form name="processSearchForm" ng-submit="processListNgTable.reload()" novalidate autocomplete="off">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-filter font-green-sharp"></i>
+                        <span class="caption-subject bold">Filtri di ricerca </span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                            <button type="button" class="btn btn-primary" ui-sref="shell.process-create">
+                                <i class="fa fa-plus"></i> Crea
+                            </button>
+                            <button type="button" class="btn btn-primary" ng-click="clearFilter()">
+                                <i class="fa fa-trash"></i> Pulisci filtri
+                            </button>
+                            <button type="submit" class="btn btn-primary" ng-click="processListNgTable.reload()" ng-disabled="model.isFetchBusy">
+                                <i class="fa fa-search" ng-class="model.isFetchBusy ? 'fa fa-spinner fa-spin': 'fa fa-search'"></i> Ricerca
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Nome</label>
+                            <input type="text" name="nome" class="form-control input-sm" ng-model="model.name">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light no-padding-bottom">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-list font-green-sharp"></i>
+                        <span class="caption-subject bold">Risultati di ricerca</span>
+                        <span class="caption-helper">Trovati {{model.processList.length}} elementi {{processListNgTable._settings.total}}</span>
+                    </div>
+                </div>
+                <div class="portlet-body" ng-show="model.processList && model.processList.length > 0">
+                    <div class="table-responsive">
+                        <table ng-table="processListNgTable" class="table table-hover table-font-12">
+
+                            <tr ng-repeat="item in $data track by item.id">
+                                <td data-title="'Nome'" sortable="'Name'">{{item.name}}</td>
+                                <td data-title="'Abilitato?'" sortable="'IsEnabled'">
+                                    <span ng-show="item.isEnabled" class="label label label-success">
+                                        <i class="fa fa-check" aria-hidden="true"></i>
+                                    </span>
+                                    <span ng-show="!item.isEnabled">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                    </span>
+                                </td>
+                                <!--<td data-title="'Inserita il'" sortable="'InsertDate'">{{ moment(item.insertDate).format('DD/MM/YY hh:mm')}}</td>-->                               
+                                <td>
+                                    <div class="btn-group inline pull-right" data-toggle="buttons-checkbox">
+                                        <div class="btn btn-sm btn-primary" uib-tooltip="Modifica" ng-click="navigateUpdate(item)">
+                                            <i class="fa fa-pencil-square-o"></i>
+                                        </div>
+                                        <div class="btn btn-sm btn-danger"
+                                             uib-tooltip="Elimina"
+                                             ng-confirm-title="Cancellazione Processo"
+                                             ng-confirm-smalltitle=""
+                                             ng-confirm-message="Sei sicuro di voler cancellare {{item.name}}?"
+                                             ng-confirm-btn-ok-title="Si"
+                                             ng-confirm-btn-cancel-title="No"
+                                             ng-confirm-click="delete(item)">
+                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,145 @@
+﻿<div class="row">
+    <div class="col-md-6">
+        <label>Diagnosi</label>
+        <textarea rows="5"
+                  name="diagnosi"
+                  class="form-control input-sm"
+                  ng-model="registryModel.diagnosis"
+                  ng-maxlength="2000"></textarea>
+        <div ng-show="registryEditForm.$submitted || registryEditForm.diagnosi.$dirty">
+            <div ng-show="registryEditForm.diagnosi.$error.maxlength" class="text-invalid">
+                {{::$root.validationMessages.maxLength}} 2000
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <label>Malattie pregresse</label>
+        <textarea rows="5"
+                  name="malattiePregresse"
+                  class="form-control input-sm"
+                  ng-model="registryModel.previousIllnesses"
+                  ng-maxlength="2000"></textarea>
+        <div ng-show="registryEditForm.$submitted || registryEditForm.malattiePregresse.$dirty">
+            <div ng-show="registryEditForm.malattiePregresse.$error.maxlength" class="text-invalid">
+                {{::$root.validationMessages.maxLength}} 2000
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <label>Anamnesi prossima</label>
+        <textarea name="anamnesiProssima"
+                  rows="5"
+                  class="form-control input-sm"
+                  ng-model="registryModel.nextMedicalHistory"
+                  ng-maxlength="2000"></textarea>
+        <div ng-show="registryEditForm.$submitted || registryEditForm.anamnesiProssima.$dirty">
+            <div ng-show="registryEditForm.anamnesiProssima.$error.maxlength" class="text-invalid">
+                {{::$root.validationMessages.maxLength}} 2000
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <label>Anamnesi remota</label>
+        <textarea name="anamnesiRemota"
+                  rows="5"
+                  class="form-control input-sm"
+                  ng-model="registryModel.remoteAnamnesis"
+                  ng-maxlength="2000"></textarea>
+        <div ng-show="registryEditForm.$submitted || registryEditForm.anamnesiRemota.$dirty">
+            <div ng-show="registryEditForm.anamnesiRemota.$error.maxlength" class="text-invalid">
+                {{::$root.validationMessages.maxLength}} 2000
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <label>Allergie</label>
+        <textarea name="allergie"
+                  rows="5"
+                  class="form-control input-sm"
+                  ng-model="registryModel.allergy"
+                  ng-maxlength="2000"></textarea>
+        <div ng-show="registryEditForm.$submitted || registryEditForm.allergie.$dirty">
+            <div ng-show="registryEditForm.allergie.$error.maxlength" class="text-invalid">
+                {{::$root.validationMessages.maxLength}} 2000
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <label>Dieta</label>
+        <textarea name="dieta"
+                  rows="5"
+                  class="form-control input-sm"
+                  ng-model="registryModel.diet"
+                  ng-maxlength="2000"></textarea>
+        <div ng-show="registryEditForm.$submitted || registryEditForm.dieta.$dirty">
+            <div ng-show="registryEditForm.dieta.$error.maxlength" class="text-invalid">
+                {{::$root.validationMessages.maxLength}} 2000
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <label>Patologie in corso</label>
+        <textarea name="patologieInCorso"
+                  rows="5"
+                  class="form-control input-sm"
+                  ng-model="registryModel.pathologiesInProgress"
+                  ng-maxlength="2000"></textarea>
+        <div ng-show="registryEditForm.$submitted || registryEditForm.patologieInCorso.$dirty">
+            <div ng-show="registryEditForm.patologieInCorso.$error.maxlength" class="text-invalid">
+                {{::$root.validationMessages.maxLength}} 2000
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <label>Intolleranze</label>
+        <textarea name="intolleranze"
+                  rows="5"
+                  class="form-control input-sm"
+                  ng-model="registryModel.intollerance"
+                  ng-maxlength="2000"></textarea>
+        <div ng-show="registryEditForm.$submitted || registryEditForm.intolleranze.$dirty">
+            <div ng-show="registryEditForm.intolleranze.$error.maxlength" class="text-invalid">
+                {{::$root.validationMessages.maxLength}} 2000
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <label>Note</label>
+        <textarea name="note"
+                  rows="5"
+                  class="form-control input-sm"
+                  ng-model="registryModel.note"
+                  ng-maxlength="2000"></textarea>
+        <div ng-show="registryEditForm.$submitted || registryEditForm.note.$dirty">
+            <div ng-show="registryEditForm.note.$error.maxlength" class="text-invalid">
+                {{::$root.validationMessages.maxLength}} 2000
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <label>Gruppo Sanguigno</label>
+        <select class="form-control input-sm"
+                name="gruppoSanguigno"
+                ng-model="registryModel.bloodGroup"
+                ng-options="item as item.description for item in bloodGroupList track by item.id">
+            <option value=""> - </option>
+        </select>
+    </div>
+</div>

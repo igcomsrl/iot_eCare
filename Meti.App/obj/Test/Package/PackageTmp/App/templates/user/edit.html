@@ -1,0 +1,124 @@
+﻿<style>
+    .modal {
+        z-index: 11000 !important;
+    }
+</style>
+
+<form name="userEditForm" novalidate autocomplete="off">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()"></button>
+            <h4 class="modal-title" ng-bind="title"></h4>
+        </div>
+
+        <div class="modal-body">
+            <div class="note note-info note-bordered">
+                <p>{{::$root.validationMessages.fieldsStarRequired}}</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="label-sm">Cognome*</label>
+                    <input type="text"
+                           name="cognome"
+                           class="form-control input-sm"
+                           ng-model="userModel.surname"
+                           required
+                           
+                           ng-maxlength="255">
+                    <div ng-show="userEditForm.$submitted || userEditForm.cognome.$dirty">
+                        <div ng-show="userEditForm.cognome.$error.required" class="text-invalid">
+                            {{::$root.validationMessages.required}}
+                        </div>
+                        <div ng-show="userEditForm.cognome.$error.maxlength" class="text-invalid">
+                            {{::$root.validationMessages.maxLength}} 255
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label>Nome*</label>
+                    <input type="text"
+                           name="nome"
+                           class="form-control input-sm"
+                           ng-model="userModel.firstname"
+                           required
+                           ng-maxlength="255">
+                    <div ng-show="userEditForm.$submitted || userEditForm.nome.$dirty">
+                        <div ng-show="userEditForm.nome.$error.required" class="text-invalid">
+                            {{::$root.validationMessages.required}}
+                        </div>
+                        <div ng-show="userEditForm.nome.$error.maxlength" class="text-invalid">
+                            {{::$root.validationMessages.maxLength}} 255
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label>Username*</label>
+                    <input type="text"
+                           name="Username"
+                           class="form-control input-sm"
+                           ng-model="userModel.username"
+                           required
+                           uib-tooltip="Si consiglia di impostare l'email di riferimento come username."
+                           ng-maxlength="255">
+                    <div ng-show="userEditForm.$submitted || userEditForm.username.$dirty">
+                        <div ng-show="userEditForm.username.$error.required" class="text-invalid">
+                            {{::$root.validationMessages.required}}
+                        </div>
+                        <div ng-show="userEditForm.username.$error.maxlength" class="text-invalid">
+                            {{::$root.validationMessages.maxLength}} 255
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Email*</label>
+                    <input type="text"
+                           name="email"
+                           class="form-control input-sm"
+                           ng-model="userModel.email"
+                           required
+                           uib-tooltip="Nel caso in cui si registrasse un Paziente è necessario inserire la stessa email configurata nella sezione 'Anagrafiche'."
+                           ng-maxlength="255">
+                    <div ng-show="userEditForm.$submitted || userEditForm.email.$dirty">
+                        <div ng-show="userEditForm.email.$error.maxlength" class="text-invalid">
+                            {{::$root.validationMessages.maxLength}} 255
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label>Contatore accessi falliti</label>
+                    <input type="text"
+                           name="accessFailedCount"
+                           class="form-control input-sm"
+                           ng-model="userModel.accessFailedCount"
+                           ng-maxlength="255">
+                    <div ng-show="userEditForm.$submitted || userEditForm.email.$dirty">
+                        <div ng-show="userEditForm.email.$error.maxlength" class="text-invalid">
+                            {{::$root.validationMessages.maxLength}} 255
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label>Immagine profilo file path</label>
+                    <input type="text"
+                           name="imgFilePath"
+                           class="form-control input-sm"
+                           ng-model="userModel.imgFilePath"
+                           ng-maxlength="255">
+                    <div ng-show="userEditForm.$submitted || userEditForm.email.$dirty">
+                        <div ng-show="userEditForm.imgFilePath.$error.maxlength" class="text-invalid">
+                            {{::$root.validationMessages.maxLength}} 255
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn default" ng-click="cancel()">Annulla</button>
+            <button type="submit" data-dismiss="modal" class="btn green" ng-click="save()">Salva</button>
+        </div>
+    </div>
+</form>

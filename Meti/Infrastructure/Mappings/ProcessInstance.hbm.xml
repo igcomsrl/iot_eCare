@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Concesso in licenza a norma dell'EUPL, versione 1.2. 2019
+-->
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Meti" namespace="Meti.Domain.Models">
+
+  <class name="ProcessInstance" table="processInstances">
+    <id name="Id" column="Id" type="guid" >
+      <generator class="guid.comb" />
+    </id>
+
+    <!--Entity Mapping-->
+    <property name="Name" length="255"/>
+    <many-to-one name="Patient" column="Patient_Id" lazy="false"/>
+    <many-to-one name="Process" column="Process_Id" lazy="proxy"/>
+    <bag name="Doctors" table="processInstanceDoctor_joint" lazy="true" cascade="none" inverse="false">
+      <key column="ProcessInstance_Id" not-null="false"/>
+      <many-to-many class="Registry" column="Doctor_Id" />
+    </bag>
+    <bag name="ReferencePersons" table="processInstanceReferencePerson_joint" lazy="true" cascade="none" inverse="false">
+      <key column="ProcessInstance_Id" not-null="false"/>
+      <many-to-many class="Registry" column="ReferencePerson_Id" />
+    </bag>
+    <property name="ProcessInstanceState"/>
+    <property name="ReOpenDate"/>
+    <property name="ReOpenFrom"/>
+    <property name="CloseDate"/>
+    <property name="CloseFrom"/>
+    
+
+    <!--Entity Base -->
+    <property name="InsertDate" />
+    <property name="UpdateDate" />
+    <property name="InsertUser" />
+    <property name="UpdateUser" />
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,88 @@
+﻿<style>
+    .modal {
+        z-index: 11000 !important;
+    }
+</style>
+
+<form name="roleEditForm" novalidate autocomplete="off">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()"></button>
+            <h4 class="modal-title" ng-bind="title"></h4>
+        </div>
+
+        <div class="modal-body">
+            <div class="note note-info note-bordered">
+                <p>{{::$root.validationMessages.fieldsStarRequired}}</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="label-sm">Nome*</label>
+                    <input type="text"
+                           name="name"
+                           class="form-control input-sm"
+                           ng-model="roleModel.name"
+                           required
+                           ng-maxlength="255">
+                    <div ng-show="roleEditForm.$submitted || roleEditForm.name.$dirty">
+                        <div ng-show="roleEditForm.name.$error.required" class="text-invalid">
+                            {{::$root.validationMessages.required}}
+                        </div>
+                        <div ng-show="roleEditForm.name.$error.maxlength" class="text-invalid">
+                            {{::$root.validationMessages.maxLength}} 255
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>Descrizione</label>
+                    <input type="text"
+                           name="nome"
+                           class="form-control input-sm"
+                           ng-model="roleModel.description"
+                           ng-maxlength="2000">
+                    <div ng-show="roleEditForm.$submitted || roleEditForm.description.$dirty">
+                        <div ng-show="roleEditForm.description.$error.required" class="text-invalid">
+                            {{::$root.validationMessages.required}}
+                        </div>
+                        <div ng-show="roleEditForm.description.$error.maxlength" class="text-invalid">
+                            {{::$root.validationMessages.maxLength}} 255
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Utenti</h5>
+                    <select kendo-multi-select
+                            k-data-text-field="'username'"
+                            k-data-value-field="'id'"
+                            k-data-source="usersKendoDataSource"
+                            k-auto-close="false"
+                            k-on-change="userChange(kendoEvent)"
+                            k-rebind="usersKendoDataSource"
+                            ng-model="roleModel.users"></select>   
+
+                </div>
+
+                <div class="col-md-6">
+                    <h5>Claims</h5>
+                    <select name="claim" kendo-multi-select
+                            k-data-text-field="'name'"
+                            k-data-value-field="'id'"
+                            k-data-source="claimsKendoDataSource"
+                            k-auto-close="false"
+                            k-on-change="claimChange(kendoEvent)"
+                            k-rebind="claimsKendoDataSource"
+                            ng-model="roleModel.claims"></select>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn default" ng-click="cancel()">Annulla</button>
+            <button type="submit" data-dismiss="modal" class="btn green" ng-click="save()">Salva</button>
+        </div>
+    </div>
+</form>

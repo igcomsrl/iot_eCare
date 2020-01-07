@@ -1,0 +1,103 @@
+﻿<style>
+    /*.modal {
+        z-index: 11000 !important;
+    }*/
+</style>
+
+<form name="healthRiskEditForm" novalidate autocomplete="off">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()"></button>
+            <h4 class="modal-title" ng-bind="title"></h4>
+        </div>
+
+        <div class="modal-body">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <label>Tipologia*</label>
+                    <select class="form-control input-sm"
+                            name="type"
+                            ng-model="healthRiskModel.type"
+                            required
+                            ng-options="item as item.description for item in healthRiskTypeList track by item.id "></select>
+                    <div ng-show="healthRiskEditForm.$submitted || healthRiskEditForm.type.$dirty">
+                        <div ng-show="healthRiskEditForm.type.$error.required" class="text-invalid">
+                            {{::$root.validationMessages.required}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label>Livello*</label>
+                    <select class="form-control input-sm"
+                            name="level"
+                            ng-model="healthRiskModel.level"
+                            required
+                            ng-options="item as item.description for item in healthRiskLevelList track by item.id"></select>
+                    <div ng-show="healthRiskEditForm.$submitted || healthRiskEditForm.level.$dirty">
+                        <div ng-show="healthRiskEditForm.level.$error.required" class="text-invalid">
+                            {{::$root.validationMessages.required}}
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="col-md-4">
+                    <label class="label-sm">Rating*</label>
+                    <input type="text"
+                           name="rating"
+                           class="form-control input-sm"
+                           ng-model="healthRiskModel.rating"
+                           required
+                           ng-maxlength="255">
+                    <div ng-show="healthRiskEditForm.$submitted || healthRiskEditForm.rating.$dirty">
+                        <div ng-show="healthRiskEditForm.rating.$error.required" class="text-invalid">
+                            {{::$root.validationMessages.required}}
+                        </div>
+                        <div ng-show="healthRiskEditForm.rating.$error.maxlength" class="text-invalid">
+                            {{::$root.validationMessages.maxLength}} 255
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Data rilevazione*</label>
+                    <p class="input-group">
+                        <input type="text" class="form-control" name="startDate" cs-date-to-iso uib-datepicker-popup="dd/MM/yyyy" ng-model="healthRiskModel.startDate" is-open="openStartDate"
+                               close-text="Close" show-weeks="false" show-button-bar="false" required/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default ui-btn-datepicker" ng-click="openStartDatePicker($event)"><i class="fa fa-calendar"></i></button>
+                        </span>
+                    </p>
+                    <div ng-show="healthRiskEditForm.$submitted || healthRiskEditForm.startDate.$dirty">
+                        <div ng-show="healthRiskEditForm.startDate.$error.required" class="text-invalid">
+                            {{::$root.validationMessages.required}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>Data fine</label>
+                    <p class="input-group">
+                        <input type="text" class="form-control" name="endDate" cs-date-to-iso uib-datepicker-popup="dd/MM/yyyy" ng-model="healthRiskModel.endDate" is-open="openEndDate" 
+                               close-text="Close" show-weeks="false" show-button-bar="false" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default ui-btn-datepicker" ng-click="openEndDatePicker($event)"><i class="fa fa-calendar"></i></button>
+                        </span>
+                    </p>
+                    <div ng-show="healthRiskEditForm.$submitted || healthRiskEditForm.endDate.$dirty">
+                        <div ng-show="healthRiskEditForm.endDate.$error.required" class="text-invalid">
+                            {{::$root.validationMessages.required}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn default" ng-click="cancel()">Annulla</button>
+            <button type="submit" data-dismiss="modal" class="btn green" ng-click="save()">Salva</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,135 @@
+﻿<style>
+    #overlay {
+        top: 100;
+        position: absolute;
+        background-color: black;
+        opacity: 0.1;
+    }
+</style>
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="close()"></button>
+        <h4 class="modal-title blink_me" ng-show="!onlyRead">Allarme attivo!</h4>
+        <h4 class="modal-title" ng-show="onlyRead">Allarme spento</h4>
+    </div>
+
+    <div class="modal-body">
+        <uib-tabset>
+            <uib-tab heading="Informazioni su {{alarmFiredModel.processInstance.patient.comboText}}">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="portlet light profile-sidebar-portlet">
+                            <div class="profile-userpic">
+                                <img src="http://www.sharonsala.it/wp-content/uploads/2017/02/Foto_profilo_aziendale_10-1024x683.jpg" class="img-responsive" alt="">
+                            </div>
+                            <div class="profile-usertitle">
+                                <div class="profile-usertitle-name blink_me">
+                                    {{alarmFiredModel.result}}
+                                </div>
+                                <div class="profile-usertitle-job">
+                                    Via
+                                    <br />
+                                    <small>{{alarmFiredModel.processInstance.patient.comboMunicipality}}</small>
+                                    <br /><br />
+                                </div>
+                                <div class="profile-usertitle-job">
+                                    Operatore socio sanitario
+                                    <br />
+                                    <small>RESIDENZA LA PACE 0761650055</small>
+                                    <br /><br />
+                                </div>
+                          
+                                <div class="profile-usertitle-job">
+                                    Medici di riferimento
+                                    <br />
+                                    <div ng-repeat="doctor in alarmFiredModel.processInstance.doctors">
+                                        <small>{{doctor.firstname}} {{doctor.surname}} ({{doctor.mobilePhone}} / {{doctor.email}} )</small>
+                                    </div>
+                                    <br /><br />
+                                </div>
+                                <div class="profile-usertitle-job">
+                                    Persone di riferimento
+                                    <br />
+                                    <div ng-repeat="referencePerson in alarmFiredModel.processInstance.referencePersons">
+                                        <small>{{referencePerson.firstname}} {{referencePerson.surname}} ({{referencePerson.mobilePhone}} / {{referencePerson.email}} )</small>
+                                    </div>
+                                    <br /><br />
+                                </div>
+
+                                <div class="profile-usertitle-job">
+                                    Parametri Monitorati
+                                    <br />
+                                    <small ng-repeat="item in alarmFiredModel.processInstance.process.parameters">
+                                        {{item.name}}
+                                        <br />
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab heading="Consigli per l'operatore">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!--<div id="overlay" style="width:100%;height:100%; z-index:2"></div>-->
+                        <!--<span ng-bind-html="alarmFiredModel.resolvingNotes"></span>-->
+                        <label>Il medico consiglia:</label>
+                        <textarea kendo-editor k-ng-model="alarmFiredModel.resolvingNotes"></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <br />
+                        <label>Note del paziente al momento della rilevazione:</label>
+                        <textarea class="form-control" rows="6" ng-model="alarmFiredModel.patientFeedback"></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <br />
+                        <label>Feedback</label>
+                        <textarea class="form-control" rows="6" ng-model="alarmFiredModel.feedback"></textarea>
+                    </div>
+                    <div class="col-md-12" ng-show="alarmFiredModel.feedbackDate">
+                        <br />
+                        <label>Feedback in data</label>
+                        <br />
+                        {{alarmFiredModel.feedbackDate.toLocaleString("it-IT")}}
+                    </div>
+                    <div class="col-md-12" ng-show="alarmFiredModel.feedbackDate">
+                        <br />
+                        <label>Feedback sottoscritto da</label>
+                        <br />
+                        {{alarmFiredModel.feedbackBy}}
+                    </div>
+
+                </div>
+            </uib-tab>
+            <uib-tab heading="Mappa" select="showMap()" deselect="hideMap()">
+                <div ng-if="isMapVisible">
+                    <div ng-include="'App/templates/geolocation/map.html'" ng-controller="mapCtrl" ng-init="model.centerMap =  initPinMap(); model.isDetailActive = false"></div>
+                </div>
+            </uib-tab>
+            <uib-tab heading="Monitoraggio LIVE">
+                <div class="maps">                    
+                    <iframe ng-src="{{getPatientDashboardUrl(alarmFiredModel.processInstance.id)}}" width="600" height="450" frameborder="0" style="border:0"></iframe>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+
+    <div class="modal-footer">
+        <div class="btn btn-sm btn-danger"
+             ng-show="!onlyRead"
+             ng-confirm-title="Allarme: {{alarmFiredModel.paramenter.name}}"
+             ng-confirm-smalltitle=""
+             ng-confirm-message="Sei sicuro di voler spegnere {{alarmFiredModel.paramenter.name}}?"
+             ng-confirm-btn-ok-title="Si"
+             ng-confirm-btn-cancel-title="No"
+             ng-confirm-click="alarmFiredOff(alarmFiredModel)">
+            Spegni l'allarme
+        </div>
+            <button class="btn btn-sm btn-success" ng-show="onlyRead" ng-click="alarmFiredOff(alarmFiredModel)">
+                Salva
+            </button>
+        <button type="button" data-dismiss="modal" class="btn default" ng-click="close()">Chiudi</button>
+    </div>
+</div>

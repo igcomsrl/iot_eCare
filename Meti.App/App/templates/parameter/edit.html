@@ -1,0 +1,187 @@
+﻿<style>
+    /*.modal {
+        z-index: 11000 !important;
+    }*/
+</style>
+
+<form name="parameterEditForm" novalidate autocomplete="off">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()"></button>
+            <h4 class="modal-title" ng-bind="title"></h4>
+        </div>
+
+        <div class="modal-body">
+            <!--<div class="note note-info note-bordered">
+                <p>{{::$root.validationMessages.fieldsStarRequired}}</p>
+            </div>-->
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="label-sm">Nome*</label>
+                    <input type="text"
+                           name="nome"
+                           class="form-control input-sm"
+                           ng-model="parameterModel.name"
+                           required
+                           ng-maxlength="255">
+                    <div ng-show="parameterEditForm.$submitted || parameterEditForm.nome.$dirty">
+                        <div ng-show="parameterEditForm.nome.$error.required" class="text-invalid">
+                            {{::$root.validationMessages.required}}
+                        </div>
+                        <div ng-show="parameterEditForm.nome.$error.maxlength" class="text-invalid">
+                            {{::$root.validationMessages.maxLength}} 255
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label>Frequenza</label>
+                    <input type="number"
+                           min="1"
+                           name="frequenza"
+                           class="form-control input-sm"
+                           required
+                           ng-model="parameterModel.frequency">
+                    <div ng-show="parameterEditForm.$submitted || parameterEditForm.frequenza.$dirty">
+                        <div ng-show="parameterEditForm.frequenza.$error.required" class="text-invalid">
+                            {{::$root.validationMessages.required}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label>Frequenza tipologia*</label>
+                    <select class="form-control input-sm"
+                            name="frequenzaTipologia"
+                            ng-model="parameterModel.frequencyType"
+                            required
+                            ng-options="item as item.description for item in frequencyTypeList track by item.id"></select>
+                    <div ng-show="parameterEditForm.$submitted || parameterEditForm.frequenzaTipologia.$dirty">
+                        <div ng-show="parameterEditForm.frequenzaTipologia.$error.required" class="text-invalid">
+                            {{::$root.validationMessages.required}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <label class="label-sm">Abilitato?*</label><br />
+                    <input type="checkbox"
+                           name="abilitato"
+                           ng-model="parameterModel.isEnabled">
+                    <div ng-show="parameterEditForm.$submitted || parameterEditForm.name.$dirty">
+                        <div ng-show="parameterEditForm.name.$error.required" class="text-invalid">
+                            {{::$root.validationMessages.required}}
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="col-md-4" ng-show="showDevices">
+        <label>Dispositivo*</label>
+        <select class="form-control input-sm"
+                name="dispositivo"
+                ng-model="parameterModel.device"
+                ng-options="item as item.comboText for item in deviceList track by item.id">
+            <option value=""> - </option>
+        </select>
+        <div ng-show="parameterEditForm.$submitted || parameterEditForm.dispositivo.$dirty">
+            <div ng-show="parameterEditForm.dispositivo.$error.required" class="text-invalid">
+                {{::$root.validationMessages.required}}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label>Misura Posizione (Bluetooth array)</label>
+        <input type="text"
+               name="positionMisure"
+               class="form-control input-sm"
+               ng-model="parameterModel.positionMisure">
+        <div ng-show="parameterEditForm.$submitted || parameterEditForm.positionMisure.$dirty">
+            <div ng-show="parameterEditForm.positionMisure.$error.required" class="text-invalid">
+                {{::$root.validationMessages.required}}
+            </div>
+        </div>
+    </div>-->
+            </div>
+
+            <div class="row">
+                
+            </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <label>Allarmi</label>
+                <div style="float:right; margin-bottom:5px;">
+                    <a ng-click="openAlarmEdit()" class="btn btn-circle btn-primary btn-sm">
+                        <i class="fa fa-pencil"></i> Aggiungi Allarme
+                    </a>
+                </div>
+                <label ng-show="parameterModel.alarms.length == 0">
+                    <br/> 
+                    (Nessun allarme attualmente inserito)
+                </label>
+                <table class="table table-striped table-bordered table-hover" ng-show="parameterModel.alarms.length > 0">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <!--<th>Soglia minima</th>
+    <th>Soglia massima</th>-->
+                            <th>Codice colore</th>
+                            <th>Emails</th>
+                            <th>Numeri sms</th>
+                            <!--<th>Contatta operatore</th>-->
+                            <th>Abilitato?</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tbody>
+                        <tr class="hidden-xs" ng-repeat="item in parameterModel.alarms">
+                            <td ng-bind="item.name"></td>
+                            <!--<td ng-bind="item.thresholdMin"></td>
+    <td ng-bind="item.thresholdMax"></td>-->
+                            <td ng-bind="item.alarmColor.description"></td>
+                            <td ng-bind="item.emails"></td>
+                            <td ng-bind="item.smsNumbers"></td>
+                            <!--<td>
+                                <span ng-show="item.contactOperator" class="label label label-success">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </span>
+                                <span ng-show="!item.contactOperator">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </span>
+                            </td>-->
+                            <td>
+                                <span ng-show="item.isEnabled" class="label label label-success">
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                </span>
+                                <span ng-show="!item.isEnabled">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </span>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-primary"
+                                        ng-click="openAlarmEdit(item)">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-danger"
+                                        uib-tooltip="Elimina"
+                                        ng-confirm-title="Cancellazione Allarme"
+                                        ng-confirm-smalltitle=""
+                                        ng-confirm-message="Sei sicuro di voler cancellare {{item.name}}?"
+                                        ng-confirm-btn-ok-title="Si"
+                                        ng-confirm-btn-cancel-title="No"
+                                        ng-confirm-click="deleteAlarm($index)">
+                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+       
+        </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn default" ng-click="cancel()">Annulla</button>
+            <button type="submit" data-dismiss="modal" class="btn green" ng-click="save()">Salva</button>
+        </div>
+    </div>
+</form>

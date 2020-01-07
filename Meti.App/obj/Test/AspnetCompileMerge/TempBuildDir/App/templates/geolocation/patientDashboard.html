@@ -1,0 +1,46 @@
+﻿<div ng-show="!processInstanceModel">
+    <h1>Nessun paziente rilevato! Contattare l'assistenza.</h1>
+</div>
+<div class="modal-content" ng-show="processInstanceModel">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="close()"></button>
+        <h4 class="modal-title">Monitoraggio di {{processInstanceModel.patient.comboText}}</h4>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <strong>Paziente</strong>
+                <br />
+                <span ng-bind="processInstanceModel.patient.comboText"></span>
+            </div>
+            <div class="col-md-6">
+                <strong>Via</strong>
+                <br />
+                <span ng-bind="processInstanceModel.patient.comboMunicipality"></span>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <strong>Persone di riferimento</strong>
+                <br />
+                <div ng-repeat="referencePerson in processInstanceModel.referencePersons">
+                    <span>{{referencePerson.firstname}} {{referencePerson.surname}} ({{referencePerson.mobilePhone}} / {{referencePerson.email}} )</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <strong>Medico di riferimento</strong>
+                <br />
+                <div ng-repeat="doctor in processInstanceModel.doctors">
+                    <span>{{doctor.firstname}} {{doctor.surname}} ({{doctor.mobilePhone}} / {{doctor.email}} )</span>
+                </div>
+            </div>
+        </div>
+        <iframe ng-src="{{getPatientDashboardUrl(processInstanceModel.id)}}" style="border: 0; width: 100%; min-height: 768px;"></iframe>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn default" ng-click="close()">Chiudi</button>
+    </div>
+</div>

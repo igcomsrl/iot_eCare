@@ -1,0 +1,292 @@
+﻿<div class="page-head">
+
+    <div class="page-title">
+        <h1>
+            <i class="fa fa-bar-chart" aria-hidden="true"></i>
+            Esposizione servizi per SmartMe
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h1>Servizi</h1>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>GetByDevice</h3>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+
+    <div class="col-md-12">
+        <label>Url: </label>
+        <strong>dominio/api/parameter/getByDevice</strong>
+    </div>
+
+    <br />
+
+    <div class="col-md-12">
+        <label>Request: </label>
+        <strong>Verb: GET.</strong>
+        <strong>Parameters: UUID (Guid del device mappato nel backoffice)</strong>
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <label>Response: </label>
+        <strong>Response Type: JSON.</strong>
+        <strong>Oggetto JSON contenente il parametro con gli allarmi(soglie) ad esso associati</strong>
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <h4>Esegui un test:</h4>
+        <br />
+        <label>Request:</label><br />
+        <button class="btn btn-md btn-primary" ng-click="getParameterByDevice()">Esegui GetParameter</button>
+        <input type="text" class="form-control" style="width:70%;float:left" ng-model="uuidDeviceRequest" />
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <label>Response:</label>
+        <textarea class="form-control" rows="5" ng-model="uuidDeviceResponse"></textarea>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Log</h3>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+
+    <div class="col-md-12">
+        <label>Url: </label>
+        <strong>dominio/api/DeviceErrorLog/Log</strong>
+    </div>
+
+    <br />
+
+    <div class="col-md-12">
+        <label>Request: </label>
+        <strong>Verb: Post.</strong>
+        <strong>Parameters: Error, DeviceId, ProcessInstanceId</strong>
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <label>Response: </label>
+        <strong>Response Type: JSON.</strong>
+        <strong>status</strong>
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <h4>Esegui un test:</h4>
+        <br />
+        <label>Request:</label><br />
+        <button class="btn btn-md btn-primary" ng-click="postLog()">Esegui Log</button>
+        <input type="text" class="form-control" style="width:70%;float:left" ng-model="logRequest" />
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <label>Response:</label>
+        <textarea class="form-control" rows="5" ng-model="logResponse"></textarea>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Crea allarme</h3>
+    </div>
+</div>
+<br />
+
+<div class="row">
+
+    <div class="col-md-12">
+        <label>Url: </label>
+        <strong>dominio/api/alarmFired/create</strong>
+    </div>
+
+    <br />
+
+    <div class="col-md-12">
+        <label>Request: </label>
+        <strong>Verb: Post.</strong>
+        <strong>Parameters: result, AlarmColor, ParameterId, ProcessInstanceId, alarmId</strong>
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <label>Response: </label>
+        <strong>Response Type: JSON.</strong>
+        <strong>status</strong>
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <h4>Esegui un test:</h4>
+        <br />
+        <label>Request:</label><br />
+        <button class="btn btn-md btn-primary" ng-click="createAlarmFired()">Esegui Log</button>
+        <input type="text" class="form-control" style="width:70%;float:left" ng-model="alarmFiredRequest" />
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <label>Response:</label>
+        <textarea class="form-control" rows="5" ng-model="logResponse"></textarea>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Aggiorna posizione GPS</h3>
+    </div>
+</div>
+<br />
+
+<div class="row">
+
+    <div class="col-md-12">
+        <label>Url: </label>
+        <strong>dominio/api/processInstance/updatePositionLast</strong>
+    </div>
+
+    <br />
+
+    <div class="col-md-12">
+        <label>Request: </label>
+        <strong>Verb: Post.</strong>
+        <strong>Parameters: ProcessInstanceId, latitude, longitude</strong>
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <label>Response: </label>
+        <strong>Response Type: JSON.</strong>
+        <strong>status</strong>
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <h4>Esegui un test:</h4>
+        <br />
+        <label>Request:</label><br />
+        <button class="btn btn-md btn-primary" ng-click="updatePositionLast()">Aggiorna posizione</button>
+        <input type="text" class="form-control" style="width:70%;float:left" ng-model="updatePositionLastRequest" />
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <label>Response:</label>
+        <textarea class="form-control" rows="5" ng-model="logResponse"></textarea>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Fetch Registry By ProcessInstances</h3>
+    </div>
+</div>
+<br />
+
+<div class="row">
+
+    <div class="col-md-12">
+        <label>Url: </label>
+        <strong>dominio/api/registry/FetchByProcessInstanceIds</strong>
+    </div>
+
+    <br />
+
+    <div class="col-md-12">
+        <label>Request: </label>
+        <strong>Verb: Get.</strong>
+        <strong>Parameters: ProcessInstanceIds (array)</strong>
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <label>Response: </label>
+        <strong>Response Type: JSON.</strong>
+        <strong>status</strong>
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <h4>Esegui un test:</h4>
+        <br />
+        <label>Request:</label><br />
+        <button class="btn btn-md btn-primary" ng-click="fetchRegistryByProcessInstances()">Recupera le anagrafiche</button>
+        <input type="text" class="form-control" style="width:70%;float:left" ng-model="fetchRegistryByProcessInstancesRequest" />
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <label>Response:</label>
+        <textarea class="form-control" rows="5" ng-model="fetchRegistryByProcessInstancesResponse"></textarea>
+    </div>
+</div>
+
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <h3>Post Device</h3>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+
+
+    <div class="col-md-12">
+        <label>Request: </label>
+        <strong>Verb: Post.</strong>
+        <strong>Parameters: metrics (array), timestamp, mac</strong>
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <label>Response: </label>
+        <strong>Response Type: JSON.</strong>
+        <strong>status</strong>
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <h4>Esegui un test:</h4>
+        <br />
+        <label>Url:</label>
+        <input type="text" class="form-control" style="width:70%;float:left" ng-model="postDeviceUrl" />
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <label>Request:</label>
+        <input type="text" class="form-control" style="width:70%;float:left" ng-model="postDeviceRequest" />
+        <button class="btn btn-md btn-primary" ng-click="postDevice()">Invia metrica!</button>
+    </div>
+    <br />
+
+    <div class="col-md-12">
+        <label>Response:</label>
+        <textarea class="form-control" rows="5" ng-model="postDeviceResponse"></textarea>
+    </div>
+</div>

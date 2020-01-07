@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Concesso in licenza a norma dell'EUPL, versione 1.2. 2019
+-->
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Meti" namespace="Meti.Domain.Models">
+
+  <class name="AlarmFired" table="alarmFired">
+    <id name="Id" column="Id" type="guid" >
+      <generator class="guid.comb" />
+    </id>
+
+    <!--Entity Mapping-->
+    <property name="AlarmColor"/>
+    <property name="Result" />
+    <many-to-one name="Parameter" column="Parameter_Id" lazy="false"/>
+    <many-to-one name="ProcessInstance" column="ProcessInstance_Id" lazy="proxy"/>
+    <many-to-one name="Alarm" column="Alarm_Id" lazy="false"/>
+    <property name="IsActive" />
+    <property name="ResolvingNotes" type="string" length="1000000"/>
+    <property name="Latitude" length="1000"/>
+    <property name="Longitude" length="1000"/>
+    <property name="IsFall"/>
+    <property name="IsFallNoResponse"/>
+    <property name="Patient"/>
+    <property name="Feedback"/>
+    <property name="FeedbackDate"/>
+    <property name="FeedbackBy"/>
+    <property name="PatientFeedback"/>
+    
+    <!--Entity Base -->
+    <property name="InsertDate" />
+    <property name="UpdateDate" />
+    <property name="InsertUser" />
+    <property name="UpdateUser" />
+  </class>
+</hibernate-mapping>

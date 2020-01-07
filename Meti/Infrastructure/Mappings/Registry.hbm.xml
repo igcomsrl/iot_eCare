@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Concesso in licenza a norma dell'EUPL, versione 1.2. 2019
+-->
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Meti" namespace="Meti.Domain.Models">
+
+  <class name="Registry" table="registry">
+    <id name="Id" column="Id" type="guid" >
+      <generator class="guid.comb" />
+    </id>
+
+    <!--Entity Mapping-->
+    <property name="Firstname" length="255"/>
+    <property name="Surname" length="255"/>
+    <property name="Sex" />
+    <property name="RegistryType" />
+    <property name="MobilePhone" length="255" />
+    <property name="Phone" length="255" />
+    <property name="Email" length="255" />
+    <property name="BirthDate" />
+    <property name="BirthPlace" length="255" />
+    <property name="MunicipalityPlace" length="255" />
+    <property name="MunicipalityPlaceAddress" length="255" />
+    <property name="MunicipalityPlaceCap" length="255" />
+    <property name="DomicilePlace" length="255" />
+    <property name="DomicilePlaceAddress" length="255" />
+    <property name="DomicilePlaceCap" length="255" />
+    <property name="Latitude" length="255" />
+    <property name="Longitude" length="255" />
+    <property name="LatitudeLast" length="255" />
+    <property name="LongitudeLast" length="255" />
+    <property name="LifeStyle" />
+    
+
+    <!--Dati clinici-->
+    <property name="BloodGroup"/>
+    <property name="Allergy" length="2000"/>
+    <property name="Intollerance" length="2000"/>
+    <property name="Diagnosis" length="2000"/>
+    <property name="PreviousIllnesses" length="2000"/>
+    <property name="NextMedicalHistory" length="2000"/>
+    <property name="RemoteAnamnesis" length="2000"/>
+    <property name="Diet" length="2000"/>
+    <property name="PathologiesInProgress" length="2000"/>
+    <property name="Note" length="2000"/>
+    <property name="Weight" length="255"/>
+    <property name="Height" length="255"/>
+    
+    <!--Medico-->
+    <property name="RegionalMedicalCode" length="255" />
+    
+    <!--File-->
+    <bag name="Files" table="fileRegistry_joint" inverse="false" cascade="all-delete-orphan">
+      <key column="registry_Id"/>
+      <many-to-many class="File" column="file_Id"/>
+    </bag>
+
+    <!--Health Risk-->
+    <bag name="HealthRisks" lazy="false" batch-size="25" inverse="false">
+      <key column="Registry_Id"></key>
+      <one-to-many class="HealthRisk" />
+    </bag>
+
+    <!--Entity Base -->
+    <property name="InsertDate" />
+    <property name="UpdateDate" />
+    <property name="InsertUser" />
+    <property name="UpdateUser" />
+  </class>
+</hibernate-mapping>

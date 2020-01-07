@@ -1,0 +1,91 @@
+﻿<div class="page-head">
+    
+    <div class="page-title">
+        <h1>Ruoli di sistema <small>cerca, crea, modifica o elimina un ruoli</small></h1>
+    </div>
+</div>
+
+<form name="roleSearchForm" ng-submit="roleListNgTable.reload()" novalidate autocomplete="off">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-filter font-green-sharp"></i>
+                        <span class="caption-subject bold">Filtri di ricerca </span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                            <button type="button" class="btn btn-primary" ng-click="openEdit()">
+                                <i class="fa fa-plus"></i> Crea
+                            </button>
+                            <button type="button" class="btn btn-primary" ng-click="clearFilter()">
+                                <i class="fa fa-trash"></i> Pulisci filtri
+                            </button>
+                            <button type="submit" class="btn btn-primary" ng-click="roleListNgTable.reload()" ng-disabled="model.isFetchBusy">
+                                <i class="fa fa-search" ng-class="model.isFetchBusy ? 'fa fa-spinner fa-spin': 'fa fa-search'"></i> Ricerca
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Nome</label>
+                            <input type="text" name="name" class="form-control input-sm" ng-model="model.name">
+                        </div>
+                        <div class="col-md-3">
+                            <label>Descrizione</label>
+                            <input type="text" name="description" class="form-control input-sm" ng-model="model.description">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light no-padding-bottom">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-list font-green-sharp"></i>
+                        <span class="caption-subject bold">Risultati di ricerca</span>
+                        <span class="caption-helper">Trovati {{model.roleList.length}} elementi {{roleListNgTable._settings.total}}</span>
+                    </div>
+                </div>
+                <div class="portlet-body" ng-show="model.roleList && model.roleList.length > 0">
+                    <div class="table-responsive">
+                        <table ng-table="roleListNgTable" class="table table-hover table-font-12">
+
+                            <tr ng-repeat="item in $data track by item.id">
+                                <td data-title="'Name'" sortable="'Name'">{{item.name}}</td>
+                                <td data-title="'Description'" sortable="'Description'">{{item.description}}</td>
+                                <td>
+                                    <div class="btn-group inline pull-right" data-toggle="buttons-checkbox">
+
+                                        <div class="btn btn-sm btn-primary" uib-tooltip="Modifica" ng-click="openEdit(item)">
+                                            <i class="fa fa-pencil-square-o"></i>
+                                        </div>
+                                        <div class="btn btn-sm btn-danger"
+                                             uib-tooltip="Elimina"
+                                             ng-confirm-title="Cancellazione Ruolo"
+                                             ng-confirm-smalltitle=""
+                                             ng-confirm-message="Sei sicuro di voler cancellare {{item.name}} {{item.description}}?"
+                                             ng-confirm-btn-ok-title="Si"
+                                             ng-confirm-btn-cancel-title="No"
+                                             ng-confirm-click="delete(item)">
+                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

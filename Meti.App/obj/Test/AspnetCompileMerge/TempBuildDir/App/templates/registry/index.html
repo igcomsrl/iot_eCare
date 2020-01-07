@@ -1,0 +1,122 @@
+﻿<div class="page-head">
+    
+    <div class="page-title">
+        <h1>Anagrafiche <small>cerca, crea, modifica o elimina un'Anagrafica</small></h1>
+    </div>
+</div>
+<!--<div class="note note-success note-bordered">
+    <p>
+        Messaggi informativi per l'utente
+    </p>
+</div>-->
+
+<form name="registrySearchForm" ng-submit="registryListNgTable.reload()" novalidate autocomplete="off">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-filter font-green-sharp"></i>
+                        <span class="caption-subject bold">Filtri di ricerca </span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group btn-group-devided" data-toggle="buttons">
+                            <button type="button" class="btn btn-primary" ng-click="openEdit()">
+                                <i class="fa fa-plus"></i> Crea
+                            </button>
+                            <button type="button" class="btn btn-primary" ng-click="clearFilter()">
+                                <i class="fa fa-trash"></i> Pulisci filtri
+                            </button>
+                            <button type="submit" class="btn btn-primary" ng-click="registryListNgTable.reload()" ng-disabled="model.isFetchBusy">
+                                <i class="fa fa-search" ng-class="model.isFetchBusy ? 'fa fa-spinner fa-spin': 'fa fa-search'"></i> Ricerca
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portlet-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Cognome</label>
+                            <input type="text" name="cognome" class="form-control input-sm" ng-model="model.surname">
+                        </div>
+                        <div class="col-md-3">
+                            <label>Nome</label>
+                            <input type="text" name="nome" class="form-control input-sm" ng-model="model.firstname">
+                        </div>
+                        <div class="col-md-3">
+                            <label>Sesso</label>
+                            <select class="form-control input-sm"
+                                    ng-model="model.sex"
+                                    ng-options="item.id as item.description for item in model.sexList track by item.id">
+                                <option value=""> - </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Tipologia</label>
+                            <select class="form-control input-sm"
+                                    ng-model="model.registryType"
+                                    ng-options="item.id as item.description for item in model.registryTypeList track by item.id">
+                                <option value=""> - </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light no-padding-bottom">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-list font-green-sharp"></i>
+                        <span class="caption-subject bold">Risultati di ricerca</span>
+                        <span class="caption-helper">Trovati {{model.registryList.length}} elementi {{registryListNgTable._settings.total}}</span>
+                    </div>
+                </div>
+                <div class="portlet-body" ng-show="model.registryList && model.registryList.length > 0">
+                    <div class="table-responsive">
+                        <table ng-table="registryListNgTable" class="table table-hover table-font-12">
+
+                            <tr ng-repeat="item in $data track by item.id">
+                                <td data-title="'Nome'" sortable="'Firstname'">{{item.firstname}}</td>
+                                <td data-title="'Cognome'" sortable="'Surname'">{{item.surname}}</td>
+                                <td data-title="'Sesso'" sortable="'Sex'">
+                                    <div ng-show="item.sexType.id == 1">M</div>
+                                    <div ng-show="item.sexType.id == 2">F</div>
+                                    <!--<i class="fa" ng-class="{'fa fa-mars': item.sexType.id == 1, 'fa fa-venus': item.sexType.id == 2}"></i>-->
+                                </td>
+                                <td data-title="'Tipologia'" sortable="'RegistryType'">{{item.registryType.description}}</td>
+                                <td data-title="'Luogo nascita'" sortable="">{{item.birthPlace}}</td>
+                                <td data-title="'Data nascita'" sortable="">{{item.birthDate}}</td>
+                                <td data-title="'Recapiti'" sortable="''">{{item.mobilePhone}} / {{item.phone}}</td>
+                                <td data-title="'Email'" sortable="">{{item.email}}</td>
+                                <td data-title="'Inserita il'" sortable="'InsertDate'">{{item.insertDate}}</td>
+                                <td>
+                                    <div class="btn-group inline pull-right" data-toggle="buttons-checkbox">
+
+                                        <div class="btn btn-sm btn-primary" uib-tooltip="Modifica" ng-click="openEdit(item)">
+                                            <i class="fa fa-pencil-square-o"></i>
+                                        </div>
+                                        <div class="btn btn-sm btn-danger"
+                                             uib-tooltip="Elimina"
+                                             ng-confirm-title="Cancellazione Anagrafica"
+                                             ng-confirm-smalltitle=""
+                                             ng-confirm-message="Sei sicuro di voler cancellare {{item.firstname}} {{item.surname}}?"
+                                             ng-confirm-btn-ok-title="Si"
+                                             ng-confirm-btn-cancel-title="No"                                             
+                                             ng-confirm-click="delete(item)">
+                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

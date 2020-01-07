@@ -1,0 +1,68 @@
+﻿<style>
+    .modal {
+        z-index: 11000 !important;
+    }
+</style>
+
+<form name="deviceEditForm" novalidate autocomplete="off">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()"></button>
+            <h4 class="modal-title" ng-bind="title"></h4>
+        </div>
+
+        <div class="modal-body">
+        <div class="note note-info note-bordered">
+            <p>{{::$root.validationMessages.fieldsStarRequired}}</p>
+        </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="label-sm">Nome*</label>
+                    <input type="text"
+                           name="nome"
+                           class="form-control input-sm"
+                           ng-model="deviceModel.name"
+                           required
+                           ng-maxlength="255">
+                    <div ng-show="deviceEditForm.$submitted || deviceEditForm.nome.$dirty">
+                        <div ng-show="deviceEditForm.nome.$error.required" class="text-invalid">
+                            {{::$root.validationMessages.required}}
+                        </div>
+                        <div ng-show="deviceEditForm.nome.$error.maxlength" class="text-invalid">
+                            {{::$root.validationMessages.maxLength}} 255
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label>macaddress*</label>
+                    <input type="text"
+                           name="macaddress"
+                           class="form-control input-sm"
+                           ng-model="deviceModel.macaddress"
+                           required
+                           ng-maxlength="255">
+                    <div ng-show="deviceEditForm.$submitted || deviceEditForm.macaddress.$dirty">
+                        <div ng-show="deviceEditForm.macaddress.$error.required" class="text-invalid">
+                            {{::$root.validationMessages.required}}
+                        </div>
+                        <div ng-show="deviceEditForm.macaddress.$error.maxlength" class="text-invalid">
+                            {{::$root.validationMessages.maxLength}} 255
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="label-sm">Abilitato?</label><br />
+                    <input type="checkbox"
+                           name="abilitato"
+                           ng-model="deviceModel.isEnabled">
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn default" ng-click="cancel()">Annulla</button>
+            <button type="submit" data-dismiss="modal" class="btn green" ng-click="save()">Salva</button>
+        </div>
+    </div>
+</form>

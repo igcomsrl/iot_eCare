@@ -1,0 +1,40 @@
+﻿<div class="page-head">
+    
+    <div class="page-title">
+        <h1>Log errori Dispositivi </h1>
+    </div>
+</div>
+<!--<div class="note note-success note-bordered">
+    <p>
+        Messaggi informativi per l'utente
+    </p>
+</div>-->
+
+<form name="deviceErrorLogSearchForm" novalidate autocomplete="off">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet light no-padding-bottom">
+                <div class="portlet-title">
+                    <div class="caption font-green-sharp">
+                        <i class="fa fa-list font-green-sharp"></i>
+                        <span class="caption-subject bold">Risultati</span>
+                        <span class="caption-helper">Trovati {{model.deviceErrorLogList.length}} elementi {{deviceErrorLogListNgTable._settings.total}}</span>
+                    </div>
+                </div>
+                <div class="portlet-body" ng-show="model.deviceErrorLogList && model.deviceErrorLogList.length > 0">
+                    <div class="table-responsive">
+                        <table ng-table="deviceErrorLogListNgTable" class="table table-hover table-font-12">
+                            <tr ng-repeat="item in $data track by $index">
+                                <td data-title="'Errore'" sortable="'Error'">{{item.error}}</td>
+                                <td data-title="'DeviceId'" sortable="'deviceId'">{{item.deviceId}}</td>
+                                <td data-title="'ProcessInstanceId'" sortable="'ProcessInstanceId'">{{item.processInstanceId}}</td>
+                                <td data-title="'Rilevato in data'" sortable="'InsertDate'">{{item.insertDate}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

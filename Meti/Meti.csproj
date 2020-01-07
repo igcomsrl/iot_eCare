@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{31B81A02-566D-4ED1-B806-C99C348F6A92}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Meti</RootNamespace>
+    <AssemblyName>Meti</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Meti.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Meti.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>Meti.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Ronciglione|AnyCPU'">
+    <OutputPath>bin\Ronciglione\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>Meti.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr3.Runtime.3.5.1\lib\net40-client\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.4\lib\net461\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.14.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.4\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MateSharp.Framework">
+      <HintPath>..\_Libraries\MateSharp.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="MateSharp.RoleClaim">
+      <HintPath>..\_Libraries\MateSharp.RoleClaim.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.1.2.4000\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.2.2.0\lib\net45\Remotion.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq.EagerFetching, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.EagerFetching.2.2.0\lib\net45\Remotion.Linq.EagerFetching.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.2.0.20126.16343\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Application\Dtos\AlarmFired\AlarmFiredSwiftDto.cs" />
+    <Compile Include="Application\Dtos\AlarmFired\AlarmFiredEditDto.cs" />
+    <Compile Include="Application\Dtos\AlarmFired\AlarmFiredDetailDto.cs" />
+    <Compile Include="Application\Dtos\AlarmMetric\AlarmMetricSensorDto.cs" />
+    <Compile Include="Application\Dtos\AlarmMetric\AlarmMetricEditDto.cs" />
+    <Compile Include="Application\Dtos\Alarm\AlarmEssentialDataDto.cs" />
+    <Compile Include="Application\Dtos\Alarm\AlarmSensorDto.cs" />
+    <Compile Include="Application\Dtos\Alarm\AlarmEditDto.cs" />
+    <Compile Include="Application\Dtos\Alarm\AlarmDetailDto.cs" />
+    <Compile Include="Application\Dtos\DeviceErrorLog\DeviceErrorLogDto.cs" />
+    <Compile Include="Application\Dtos\Device\DeviceEssentialDataDto.cs" />
+    <Compile Include="Application\Dtos\Device\DeviceDetailDto.cs" />
+    <Compile Include="Application\Dtos\Device\DeviceIndexDto.cs" />
+    <Compile Include="Application\Dtos\Device\DeviceEditDto.cs" />
+    <Compile Include="Application\Dtos\File\File.cs" />
+    <Compile Include="Application\Dtos\HealthRisk\HealthRiskDetailDto.cs" />
+    <Compile Include="Application\Dtos\HealthRisk\HealthRiskIndexDto.cs" />
+    <Compile Include="Application\Dtos\HealthRisk\HealthRiskEditDto.cs" />
+    <Compile Include="Application\Dtos\HealthRisk\HealthRiskEssentialDataDto.cs" />
+    <Compile Include="Application\Dtos\HealthRisk\HealthRiskProcessInstanceDto.cs" />
+    <Compile Include="Application\Dtos\Parameter\ParameterDetailDto.cs" />
+    <Compile Include="Application\Dtos\Parameter\ParameterSensorDetailDto.cs" />
+    <Compile Include="Application\Dtos\Parameter\ParameterSensorDto.cs" />
+    <Compile Include="Application\Dtos\Parameter\ParameterEditDto.cs" />
+    <Compile Include="Application\Dtos\Parameter\ParameterIndexDto.cs" />
+    <Compile Include="Application\Dtos\Parameter\ParameterEssentialDataDto.cs" />
+    <Compile Include="Application\Dtos\ProcessInstance\RegistryProcessInstanceDto.cs" />
+    <Compile Include="Application\Dtos\ProcessInstance\UpdatePositionLastDto.cs" />
+    <Compile Include="Application\Dtos\ProcessInstance\GeolocationSwiftDto.cs" />
+    <Compile Include="Application\Dtos\ProcessInstance\GeolocationDto.cs" />
+    <Compile Include="Application\Dtos\ProcessMacro\ProcessMacroEditDto.cs" />
+    <Compile Include="Application\Dtos\ProcessMacro\ProcessMacroDetailDto.cs" />
+    <Compile Include="Application\Dtos\ProcessInstance\ProcessInstanceDetailDto.cs" />
+    <Compile Include="Application\Dtos\ProcessInstance\ProcessInstanceEssentialDataDto.cs" />
+    <Compile Include="Application\Dtos\ProcessInstance\ProcessInstanceIndexDto.cs" />
+    <Compile Include="Application\Dtos\ProcessInstance\ProcessInstanceEditDto.cs" />
+    <Compile Include="Application\Dtos\Process\ProcessEditDto.cs" />
+    <Compile Include="Application\Dtos\Process\ProcessIndexDto.cs" />
+    <Compile Include="Application\Dtos\Process\ProcessDetailDto.cs" />
+    <Compile Include="Application\Dtos\Process\ProcessEssentialDataDto.cs" />
+    <Compile Include="Application\Dtos\Registry\RegistryDetailDto.cs" />
+    <Compile Include="Application\Dtos\Registry\RegistryIndexDto.cs" />
+    <Compile Include="Application\Dtos\Registry\RegistryEditDto.cs" />
+    <Compile Include="Application\Dtos\Registry\RegistryEssentialDataDto.cs" />
+    <Compile Include="Application\Dtos\Role\RoleEssentialDataDto.cs" />
+    <Compile Include="Application\Dtos\User\InviteFriendDto.cs" />
+    <Compile Include="Application\Services\AccountService.cs" />
+    <Compile Include="Application\Services\AlarmFiredService.cs" />
+    <Compile Include="Application\Services\InviteFriendService.cs" />
+    <Compile Include="Application\Services\AlarmMetricService.cs" />
+    <Compile Include="Application\Services\AlarmService.cs" />
+    <Compile Include="Application\Services\DeviceErrorLogService.cs" />
+    <Compile Include="Application\Services\HealthRiskService.cs" />
+    <Compile Include="Application\Services\DeviceService.cs" />
+    <Compile Include="Application\Services\FileService.cs" />
+    <Compile Include="Application\Services\ProcessMacroService.cs" />
+    <Compile Include="Application\Services\ParameterService.cs" />
+    <Compile Include="Application\Services\ProcessInstanceService.cs" />
+    <Compile Include="Application\Services\ProcessService.cs" />
+    <Compile Include="Application\Services\RegistryService.cs" />
+    <Compile Include="Domain\Models\AlarmMetric.cs" />
+    <Compile Include="Domain\Models\DeviceErrorLog.cs" />
+    <Compile Include="Domain\Models\InviteFriend.cs" />
+    <Compile Include="Domain\Models\File.cs" />
+    <Compile Include="Domain\Models\HealthRisk.cs" />
+    <Compile Include="Domain\Models\ProcessMacro.cs" />
+    <Compile Include="Domain\Models\ProcessInstance.cs" />
+    <Compile Include="Domain\Repository\IAlarmFiredRepository.cs" />
+    <Compile Include="Domain\Repository\IAlarmMetricRepository.cs" />
+    <Compile Include="Domain\Repository\IAlarmRepository.cs" />
+    <Compile Include="Domain\Repository\IDeviceErrorLogRepository.cs" />
+    <Compile Include="Domain\Repository\IHealthRiskRepository.cs" />
+    <Compile Include="Domain\Repository\IFileRepository.cs" />
+    <Compile Include="Domain\Repository\IDeviceRepository.cs" />
+    <Compile Include="Domain\Repository\IInviteFriendRepository.cs" />
+    <Compile Include="Domain\Repository\IProcessInstanceRepository.cs" />
+    <Compile Include="Domain\Repository\IProcessMacroRepository.cs" />
+    <Compile Include="Domain\Repository\IProcessRepository.cs" />
+    <Compile Include="Domain\Repository\IParameterRepository.cs" />
+    <Compile Include="Domain\Repository\IRegistryRepository.cs" />
+    <Compile Include="Domain\Services\IAccountService.cs" />
+    <Compile Include="Domain\Services\IAlarmFiredService.cs" />
+    <Compile Include="Domain\Services\IInviteFriendService.cs" />
+    <Compile Include="Domain\Services\IAlarmMetricService.cs" />
+    <Compile Include="Domain\Services\IAlarmService.cs" />
+    <Compile Include="Domain\Services\IDeviceErrorLogService.cs" />
+    <Compile Include="Domain\Services\IHealthRiskService.cs" />
+    <Compile Include="Domain\Services\IDeviceService.cs" />
+    <Compile Include="Domain\Services\IFileService.cs" />
+    <Compile Include="Domain\Services\IProcessMacroService.cs" />
+    <Compile Include="Domain\Services\IParameterService.cs" />
+    <Compile Include="Domain\Services\IProcessInstanceService.cs" />
+    <Compile Include="Domain\Services\IProcessService.cs" />
+    <Compile Include="Domain\Services\IRegistryService.cs" />
+    <Compile Include="Domain\Models\Alarm.cs" />
+    <Compile Include="Domain\Models\AlarmFired.cs" />
+    <Compile Include="Domain\Models\Device.cs" />
+    <Compile Include="Domain\Models\Parameter.cs" />
+    <Compile Include="Domain\Models\Process.cs" />
+    <Compile Include="Domain\Models\Registry.cs" />
+    <Compile Include="Domain\ValueObjects\LifeStyle.cs" />
+    <Compile Include="Domain\ValueObjects\HealthRiskLevel.cs" />
+    <Compile Include="Domain\ValueObjects\HealthRiskType.cs" />
+    <Compile Include="Domain\ValueObjects\ProcessInstanceState.cs" />
+    <Compile Include="Domain\ValueObjects\AlarmColor.cs" />
+    <Compile Include="Domain\ValueObjects\BloodGroup.cs" />
+    <Compile Include="Domain\ValueObjects\Frequency.cs" />
+    <Compile Include="Domain\ValueObjects\ProcessType.cs" />
+    <Compile Include="Domain\ValueObjects\SexType.cs" />
+    <Compile Include="Domain\ValueObjects\RegistryType.cs" />
+    <Compile Include="Infrastructure\Configurations\AutofacConfig.cs" />
+    <Compile Include="Infrastructure\Configurations\AutomapperConfig.cs" />
+    <Compile Include="Infrastructure\Configurations\Log4NetConfig.cs" />
+    <Compile Include="Infrastructure\Emails\RazorCredentialTemplate.cs" />
+    <Compile Include="Infrastructure\Helpers\HttpClientHelper.cs" />
+    <Compile Include="Infrastructure\Helpers\HttpClientResponseModel.cs" />
+    <Compile Include="Infrastructure\Providers\MetiAuthTokenProvider.cs" />
+    <Compile Include="Infrastructure\Repository\AlarmFiredRepository.cs" />
+    <Compile Include="Infrastructure\Repository\AlarmMetricRepository.cs" />
+    <Compile Include="Infrastructure\Repository\AlarmRepository.cs" />
+    <Compile Include="Infrastructure\Repository\DeviceErrorLogRepository.cs" />
+    <Compile Include="Infrastructure\Repository\HealthRiskRepository.cs" />
+    <Compile Include="Infrastructure\Repository\FileRepository.cs" />
+    <Compile Include="Infrastructure\Repository\DeviceRepository.cs" />
+    <Compile Include="Infrastructure\Repository\InviteFriendRepository.cs" />
+    <Compile Include="Infrastructure\Repository\ParameterRepository.cs" />
+    <Compile Include="Infrastructure\Repository\ProcessInstanceRepository.cs" />
+    <Compile Include="Infrastructure\Repository\ProcessMacroRepository.cs" />
+    <Compile Include="Infrastructure\Repository\ProcessRepository.cs" />
+    <Compile Include="Infrastructure\Repository\RegistryRepository.cs" />
+    <Compile Include="Infrastructure\Security\EncryptPassword.cs" />
+    <Compile Include="Infrastructure\Security\PasswordGenerator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Infrastructure\Mappings\Alarm.hbm.xml" />
+    <EmbeddedResource Include="Infrastructure\Mappings\AlarmFired.hbm.xml" />
+    <EmbeddedResource Include="Infrastructure\Mappings\Device.hbm.xml" />
+    <EmbeddedResource Include="Infrastructure\Mappings\Parameter.hbm.xml" />
+    <EmbeddedResource Include="Infrastructure\Mappings\Process.hbm.xml" />
+    <EmbeddedResource Include="Infrastructure\Mappings\Registry.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\Logs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Meti.ruleset" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Infrastructure\Mappings\ProcessInstance.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Infrastructure\Mappings\File.hbm.xml" />
+    <EmbeddedResource Include="Infrastructure\Mappings\HealthRisk.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Infrastructure\Mappings\InviteFriend.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="Infrastructure\Mappings\ProcessMacro.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Infrastructure\Mappings\DeviceErrorLog.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Infrastructure\Mappings\AlarmMetric.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
