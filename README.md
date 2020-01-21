@@ -39,7 +39,7 @@ Se vuoi contribuire a iot_eCare, leggi il file CONTRIBUTING.md, e restuiscilo fi
 
 ### Licensing
 
-This project is currently licensed under the EUPL License.
+Questo progetto è distribuito sotto EUPL License.
 
 
 
