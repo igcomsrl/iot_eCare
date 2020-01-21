@@ -29,7 +29,7 @@ Keras		2.2.5		https://github.com/keras-team/keras/releases
 
 Tensorflow	1.14.0		https://github.com/tensorflow/tensorflow/releases
 
-### Installatione
+### Installazione
 
 Seguire le istruzioni di installazione presenti nel file "Manuale_Installazione_CentraleOperativa.pdf"
 
