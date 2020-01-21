@@ -30,11 +30,12 @@ Keras		2.2.5		https://github.com/keras-team/keras/releases
 Tensorflow	1.14.0		https://github.com/tensorflow/tensorflow/releases
 
 ### Installation
-Follow the installation instructions present into the file "Manuale_Installazione_CentraleOperativa.pdf"
+
+Seguire le istruzioni di installazione presenti nel file "Manuale_Installazione_CentraleOperativa.pdf"
 
 ### Contributing
 
-If you would like to contribute to iot_eCare, Community Edition project, please read CONTRIBUTING.md, then sign and return the Contributor License Agreement (CLA).
+Se vuoi contribuire a iot_eCare, leggi il file CONTRIBUTING.md, e restuiscilo firmato
 
 ### Licensing
 
