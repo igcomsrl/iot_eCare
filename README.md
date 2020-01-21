@@ -1,9 +1,3 @@
-# iot_eCare
-HealthCare IOT Monitoring Platform
-
-Librerie utilizzate
-
-
 flow-cloud
 ==========
 
