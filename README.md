@@ -38,8 +38,10 @@ Seguire le istruzioni di installazione presenti nel file "Manuale_Installazione_
 Se vuoi contribuire a iot_eCare, leggi il file CONTRIBUTING.md, e restuiscilo firmato
 
 ### Licenza
-
 Questo progetto è distribuito sotto EUPL License.
+Vedi il file LICENSE per le informazioni sulla licenza: https://github.com/igcomsrl/iot_eCare/blob/master/LICENSE
+
+
 
 
 
