@@ -1,5 +1,7 @@
-﻿ <!-- BEGIN SIDEBAR -->
+
+<!-- BEGIN SIDEBAR -->
 <div class="page-sidebar-wrapper" ng-controller="sidebarCtrl">
+   
     <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
     <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
     <div class="page-sidebar navbar-collapse collapse">
@@ -44,13 +46,19 @@
                         </a>
                     </li>
                     <li class="" ui-sref-active="active" ng-if="isConfiguratore">
-                        <a href="javascript" ui-sref="shell.nodered">
+
+                        <!--<a href="javascript" ui-sref="shell.nodered">-->
+                        <a href="{{$root.noderedUrl}}" target="_blank">
                             <i class="fa fa-code" aria-hidden="true"></i>
                             <span class="title">Disegna processi (Nodered)</span>
                         </a>
                     </li>
                     <li class="" ui-sref-active="active" ng-if="isConfiguratore || isMedico">
-                        <a href="javascript" ui-sref="shell.artificialIntelligenzeNodered">
+
+
+                        <a href="{{$root.artificialIntelligenzeNodered}}" target="_blank">
+
+                            <!--<a href="javascript" ui-sref="shell.artificialIntelligenzeNodered">-->
                             <i class="fa fa-code" aria-hidden="true"></i>
                             <span class="title">Intelligenza artificiale</span>
                         </a>
@@ -140,5 +148,7 @@
 </div>
 
 <script>
+    
+
     Layout.init();
 </script>
