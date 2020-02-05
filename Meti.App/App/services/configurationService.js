@@ -1,4 +1,4 @@
-﻿app.factory("configurationService",
+app.factory("configurationService",
     ["httpService", "$q", "$rootScope", "$state", "zeusAuthService", "toastr", "serverRouteMap", "$sce",
         function (httpService, $q, $rootScope, $state, zeusAuthService, toastr, serverRouteMap, $sce) {
             var factory = {};
@@ -7,8 +7,11 @@
             factory.configureEssentials = function () {
                 $rootScope.isDebug = $("body").attr("data-isDebug") === "true";
                 $rootScope.noderedUrl = $sce.trustAsResourceUrl($("body").attr("data-noderedConsoleUrl"));
-                //console.log("nodered console url")
-                //console.log($rootScope.noderedUrl)
+                
+                $rootScope.artificialIntelligenzeNodered = $sce.trustAsResourceUrl($("body").attr("data-artificialIntelligenceUrl"));
+                
+                console.log("nodered console url")
+                console.log($rootScope.noderedUrl)
                 //console.log($("body").attr("data-noderedConsoleUrl"));
                 $rootScope.isAppReady = false;
                 
