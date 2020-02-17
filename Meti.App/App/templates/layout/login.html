@@ -1,4 +1,4 @@
-﻿<style>
+<style>
     .login {
         background-color: transparent !important;
     }
@@ -14,11 +14,23 @@
     }
 
     .fontLogo {
-        font-size: 7em;
+        font-size: 6em;
         -webkit-text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
         text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
         text-transform: uppercase;
         color: black;
+    }
+    .logo {
+        margin-bottom: 0px!important;
+        padding-bottom:0px!important;
+    }
+    .logoImage {
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
     }
 </style>
 <div class="login" >
@@ -33,6 +45,13 @@
            SEMPRE VICINI <div style=" font-size: 18px;"></div>
         </div>
     </div>
+
+    <!--<div class="logoImage">
+        <img ng-src="Content/app/img/logo_ftp_internazionale_home_full.png"
+          style="width: 250px;height:75px;padding-bottom:20px;"
+          
+          onerror="this.style.display='none'" />
+    </div>-->
 
     <div ng-if="!model.isLoginReady" class="center-absolute">
         <br />
@@ -87,16 +106,18 @@
                    Clicca <a ng-click="showForgotPasswordForm()" style="color:lightgreen">QUI</a> per ottenere una nuova password                    
                 </p>
             </div>
-            <div class="create-account" >
-                <p>
+            <div class="create-account">
+                <small style="margin-bottom:0px;color:white">
                     Sviluppato da <a href="http://www.igcom.it" style="color:lightgreen">IGCOM Srl</a> -  Società del Gruppo GIOMI SPA
-                </p>
-                <!--<p style="font-size: 10px">
-                    Per garantire una corretta funzionalità raccomandiamo:
-                    <a href="https://www.google.it/intl/it/chrome/?brand=CHBD&gclid=CjwKCAiAiarfBRASEiwAw1tYv2q-5SmB_rpH-cZkMUg3LuDSdn01LwfTZos_FHBumH4MQYTQZHGxqhoCvFoQAvD_BwE&gclsrc=aw.ds">
-                        <i class="fa fa-chrome"></i> Google Chrome
-                    </a>
-                </p>-->
+                </small>
+
+                <img ng-src="Content/app/img/logo_ftp_internazionale_home2.png"
+                     style="width: 25px;height:25px;"
+                     onerror="this.style.display='none'" />
+                <br />
+                <small style="color:white">
+                    Progetto realizzato grazie al contributo della Fondazione Terzo Pilastro Internazionale
+                </small>
             </div>
         </form>
 
